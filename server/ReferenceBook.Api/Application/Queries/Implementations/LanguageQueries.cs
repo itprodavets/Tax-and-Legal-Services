@@ -23,7 +23,7 @@ namespace ReferenceBook.Api.Application.Queries.Implementations
         /// <returns></returns>
         public async Task<IEnumerable<LanguageViewModel>> GetLanguagesAsync()
         {
-            using var connection = new SqlConnection(_connectionString);
+	        	await using var connection = new SqlConnection(_connectionString);
 
             connection.Open();
 
