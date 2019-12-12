@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Cbc.Web.Api
+namespace TaxLegal.Cbc.Report.Api
 {
 	public class Startup
 	{

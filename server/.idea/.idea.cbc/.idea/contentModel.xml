@@ -5,17 +5,73 @@
     <e p="C:\Users\itpro\.Rider2019.2\config\extensions" t="IncludeRecursive" />
     <e p="C:\Users\itpro\.Rider2019.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\itpro\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_cbc.1381331269.00" t="ExcludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\.git\info\exclude" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\@kazupon\vue-i18n-loader" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\@types" t="IncludeRecursive">
+      <e p="anymatch" t="IncludeRecursive" />
+      <e p="events" t="IncludeRecursive" />
+      <e p="minimatch" t="IncludeRecursive" />
+      <e p="node" t="IncludeRecursive" />
+      <e p="source-list-map" t="IncludeRecursive" />
+      <e p="tapable" t="IncludeRecursive" />
+      <e p="uglify-js" t="IncludeRecursive" />
+      <e p="vuelidate" t="IncludeRecursive" />
+      <e p="webpack" t="IncludeRecursive" />
+      <e p="webpack-sources" t="IncludeRecursive" />
+    </e>
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\@vue\cli-plugin-router" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\@vue\cli-plugin-typescript" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\@vue\cli-plugin-vuex" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\@vue\cli-service" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\@vue\component-compiler-utils" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\address" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\axios" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\chalk" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\chokidar" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\cli-highlight" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\commander" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\core-js" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\dotenv" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\dotenv-expand" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\fork-ts-checker-webpack-plugin" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\javascript-stringify" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\microevent.ts" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\portfinder" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\postcss" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\postcss-selector-parser" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\sass" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\sass-loader" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\source-map" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\terser" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\ts-loader" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\tslib" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\tslint" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\upath" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vue" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vue-class-component" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vue-cli-plugin-i18n" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vue-cli-plugin-vuetify" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vue-i18n" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vue-loader" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vue-property-decorator" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vue-router" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vue-template-compiler" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vuelidate" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vuetify" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vuetify-loader" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\vuex" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\webpack-chain" t="IncludeRecursive" />
+    <e p="C:\Users\itpro\Documents\Projects\github\cbc\client\node_modules\worker-rpc" t="IncludeRecursive" />
     <e p="C:\Users\itpro\Documents\Projects\github\cbc\server" t="IncludeFlat">
-      <e p="cbc.sln" t="IncludeFlat" />
-      <e p="Cbc.Web.Api" t="IncludeRecursive">
+      <e p="Cbc.Api" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Cbc.Web.Api.csproj" t="IncludeRecursive" />
+        <e p="Cbc.Api.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
-              <e p="Cbc.Web.Api.AssemblyInfo.cs" t="Include" />
+              <e p="Cbc.Api.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -25,7 +81,45 @@
         </e>
         <e p="Startup.cs" t="Include" />
       </e>
+      <e p="Cbc.Application" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Cbc.Application.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Cbc.Application.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="cbc.sln" t="IncludeFlat" />
+      <e p="Common" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Common.csproj" t="IncludeRecursive" />
+        <e p="Domain" t="Include">
+          <e p="Entity.cs" t="Include" />
+          <e p="IEntity.cs" t="Include" />
+        </e>
+        <e p="Infrastructure" t="Include">
+          <e p="ICommand.cs" t="Include" />
+          <e p="ICommandHandler.cs" t="Include" />
+          <e p="IQuery.cs" t="Include" />
+          <e p="IQueryHandler.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Common.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="packages" t="ExcludeRecursive" />
+      <e p="src" t="Include">
+        <e p="Services" t="Include">
+          <e p="cbc" t="Include" />
+        </e>
+      </e>
     </e>
   </component>
 </project>

@@ -1,3 +1,3 @@
-**Action 13 Country-by-Country Reporting**
+### **Tax and Legal Services**
 
-Under BEPS Action 13, all large multinational enterprises (MNEs) are required to prepare a country-by-country (CbC) report with aggregate data on the global allocation of income, profit, taxes paid and economic activity among tax jurisdictions in which it operates. This CbC report is shared with tax administrations in these jurisdictions, for use in high level transfer pricing and BEPS risk assessments.
+Our fully integrated tax and legal services cover all aspects of taxation together with a full range of legal services.

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Cbc.Web.Api
+namespace ReferenceBook.Api
 {
 	public class Program
 	{
