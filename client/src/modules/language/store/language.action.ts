@@ -4,13 +4,14 @@ import { AxiosResponse } from "axios";
 import { LanguageState } from "./language.state";
 import { Language } from "../models/dto.model";
 import languageService from "../services/language.service";
+import { RootState } from '@/store/root.state';
 
-const actions: ActionTree<LanguageState, any> = {
+const actions: ActionTree<LanguageState, RootState> = {
   list: async ({
     commit,
     dispatch,
     state
-  }: ActionContext<LanguageState, any>) => {
+  }: ActionContext<LanguageState, RootState>) => {
     return await languageService
       .list()
       .then((response: AxiosResponse<Language[]>) => {

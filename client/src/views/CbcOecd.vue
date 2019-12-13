@@ -17,6 +17,7 @@ import MessageSpecComponent from "../components/cbc/MessageSpec.vue";
 })
 export default class CbcOecd extends Vue {
   public created() {
+    this.$store.dispatch("country/list");
     this.$store.dispatch("language/list");
   }
 }
