@@ -38,7 +38,7 @@ namespace ReferenceBook.Api.Infrastructure
 			string[] csvheaders;
 			try
 			{
-				string[] requiredHeaders = {"Name", "Alpha2Code", "Alpha3Code", "Region", "SubRegion"};
+				string[] requiredHeaders = {"Name", "Alpha2Code", "Alpha3Code", "NumericCode", "Region", "SubRegion"};
 				csvheaders = GetHeaders(requiredHeaders, csvFileCountries);
 			}
 			catch (Exception ex)
@@ -62,10 +62,10 @@ namespace ReferenceBook.Api.Infrastructure
 			if (string.IsNullOrEmpty(value))
 				throw new Exception("Country is null or empty");
 
-			return new Country("", Alpha2Code.AD, Alpha3Code.ABW,0, Region.Africa, SubRegion.Caribbean);
+			return new Country("", Alpha2Code.AD, Alpha3Code.ABW, 0, Region.Africa, SubRegion.Caribbean);
 		}
 
-		private IEnumerable<Language> GetLanguagesFromFile(string contentRootPath, ILogger logger)
+		private static IEnumerable<Language> GetLanguagesFromFile(string contentRootPath, ILogger logger)
 		{
 			var csvFileLanguages = Path.Combine(contentRootPath, "Setup", "Languages.csv");
 			if (!File.Exists(csvFileLanguages)) throw new Exception("File is not exists");

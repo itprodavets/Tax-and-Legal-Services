@@ -4,8 +4,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ReferenceBook.Api.Application.Queries.Interfaces;
-using ReferenceBook.Api.ViewModels.Languages;
+using ReferenceBook.Application.Dto.Languages;
+using ReferenceBook.Application.Queries.Interfaces;
 
 namespace ReferenceBook.Api.Controllers
 {
@@ -21,10 +21,10 @@ namespace ReferenceBook.Api.Controllers
 			_languageQueries = languageQueries ?? throw new ArgumentNullException(nameof(languageQueries));
 			_logger = logger;
 		}
-		
+
 		[HttpGet("list")]
-		[ProducesResponseType(typeof(IEnumerable<LanguageViewModel>), (int)HttpStatusCode.OK)]
-		public async Task<ActionResult<IEnumerable<LanguageViewModel>>> GetLanguagesAsync()
+		[ProducesResponseType(typeof(IEnumerable<LanguageDto>), (int) HttpStatusCode.OK)]
+		public async Task<ActionResult<IEnumerable<LanguageDto>>> GetLanguagesAsync()
 		{
 			var countries = await _languageQueries.GetLanguagesAsync();
 			return Ok(countries);

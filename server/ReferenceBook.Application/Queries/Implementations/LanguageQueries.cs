@@ -3,31 +3,32 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Dapper;
-using ReferenceBook.Api.Application.Queries.Interfaces;
-using ReferenceBook.Api.ViewModels.Countries;
+using ReferenceBook.Api.Application;
+using ReferenceBook.Application.Dto.Languages;
+using ReferenceBook.Application.Queries.Interfaces;
 
-namespace ReferenceBook.Api.Application.Queries.Implementations
+namespace ReferenceBook.Application.Queries.Implementations
 {
-	public class CountryQueries : ICountryQueries
+	public class LanguageQueries : ILanguageQueries
 	{
 		private readonly string _connectionString;
 
-		public CountryQueries(string connectionString)
+		public LanguageQueries(string connectionString)
 		{
 			_connectionString = !string.IsNullOrWhiteSpace(connectionString) ? connectionString : throw new ArgumentNullException(nameof(connectionString));
 		}
 
 		/// <summary>
-		///  Get Countries
+		///  Get Languages
 		/// </summary>
 		/// <returns></returns>
-		public async Task<IEnumerable<CountryViewModel>> GetCountriesAsync()
+		public async Task<IEnumerable<LanguageDto>> GetLanguagesAsync()
 		{
 			await using var connection = new SqlConnection(_connectionString);
 
 			connection.Open();
 
-			return await connection.QueryAsync<CountryViewModel>(SQL_Resources.countries);
+			return await connection.QueryAsync<LanguageDto>(SQL_Resources.languages);
 		}
 	}
 }

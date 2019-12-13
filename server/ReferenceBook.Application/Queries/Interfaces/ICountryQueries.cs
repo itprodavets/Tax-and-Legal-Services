@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ReferenceBook.Api.ViewModels.Countries;
+using ReferenceBook.Application.Dto.Countries;
 
-namespace ReferenceBook.Api.Application.Queries.Interfaces
+namespace ReferenceBook.Application.Queries.Interfaces
 {
 	public interface ICountryQueries
 	{
@@ -10,6 +10,6 @@ namespace ReferenceBook.Api.Application.Queries.Interfaces
 		///  Get Countries
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<CountryViewModel>> GetCountriesAsync();
+		Task<IEnumerable<CountryDto>> GetCountriesAsync();
 	}
 }

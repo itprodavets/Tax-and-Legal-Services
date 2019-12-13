@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceBook.FunctionalTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceBook.UnitTests", "ReferenceBook.UnitTests\ReferenceBook.UnitTests.csproj", "{E13DEF5C-7544-4D8F-84ED-6D0788DE131A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceBook.Application", "ReferenceBook.Application\ReferenceBook.Application.csproj", "{554D4C50-A6F6-45D0-BF6F-A0F749C7193D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{E13DEF5C-7544-4D8F-84ED-6D0788DE131A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E13DEF5C-7544-4D8F-84ED-6D0788DE131A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E13DEF5C-7544-4D8F-84ED-6D0788DE131A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{554D4C50-A6F6-45D0-BF6F-A0F749C7193D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{554D4C50-A6F6-45D0-BF6F-A0F749C7193D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{554D4C50-A6F6-45D0-BF6F-A0F749C7193D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{554D4C50-A6F6-45D0-BF6F-A0F749C7193D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +107,7 @@ Global
 		{DB7E712C-C4DA-41AF-962F-4BCFCA29967C} = {746A51FB-F587-478C-8DCF-DFBB3FCBF54A}
 		{4C6A6D00-14D0-48F7-BBD3-3D22A1728E29} = {BBF6EC3B-C989-4F31-8668-B5D2AEC6F7D0}
 		{E13DEF5C-7544-4D8F-84ED-6D0788DE131A} = {BBF6EC3B-C989-4F31-8668-B5D2AEC6F7D0}
+		{554D4C50-A6F6-45D0-BF6F-A0F749C7193D} = {746A51FB-F587-478C-8DCF-DFBB3FCBF54A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {479C33AC-55C9-4349-AEFE-AAA7756742D5}

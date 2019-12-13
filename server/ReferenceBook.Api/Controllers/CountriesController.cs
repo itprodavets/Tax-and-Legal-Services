@@ -4,8 +4,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ReferenceBook.Api.Application.Queries.Interfaces;
-using ReferenceBook.Api.ViewModels.Countries;
+using ReferenceBook.Application.Dto.Countries;
+using ReferenceBook.Application.Queries.Interfaces;
 
 namespace ReferenceBook.Api.Controllers
 {
@@ -21,10 +21,10 @@ namespace ReferenceBook.Api.Controllers
 			_countryQueries = countryQueries ?? throw new ArgumentNullException(nameof(countryQueries));
 			_logger = logger;
 		}
-		
+
 		[HttpGet("list")]
-		[ProducesResponseType(typeof(IEnumerable<CountryViewModel>), (int)HttpStatusCode.OK)]
-		public async Task<ActionResult<IEnumerable<CountryViewModel>>> GetCountriesAsync()
+		[ProducesResponseType(typeof(IEnumerable<CountryDto>), (int) HttpStatusCode.OK)]
+		public async Task<ActionResult<IEnumerable<CountryDto>>> GetCountriesAsync()
 		{
 			var countries = await _countryQueries.GetCountriesAsync();
 			return Ok(countries);
