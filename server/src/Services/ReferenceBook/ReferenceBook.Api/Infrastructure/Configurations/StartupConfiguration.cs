@@ -43,7 +43,7 @@ namespace ReferenceBook.Api.Infrastructure.Configurations
 		{
 			if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-			var config = configuration.Get<Configuration>();
+			// var config = configuration.Get<Configuration>();
 			return services;
 		}
 
