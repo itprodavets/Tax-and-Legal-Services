@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <PackageId>ReferenceBook.FunctionalTests</PackageId>
+        <PackageId>ReferenceBook.UnitTests</PackageId>
         <PackageVersion>0.1.0</PackageVersion>
         <Description></Description>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <OutputType>Library</OutputType>
         <DebugType>portable</DebugType>
-        <LangVersion>8</LangVersion>
+        <LangVersion>latest</LangVersion>
         <WarningsAsErrors>true</WarningsAsErrors>
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
