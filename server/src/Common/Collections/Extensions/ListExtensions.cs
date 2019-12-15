@@ -52,7 +52,7 @@ namespace Common.Collections.Extensions
 
             if (alreadyVisited)
             {
-                if (inProcess) throw new ArgumentException("Cyclic dependency found! Item: " + item);
+                if (inProcess) throw new ArgumentException($"Cyclic dependency found! Item: {item}");
             }
             else
             {
