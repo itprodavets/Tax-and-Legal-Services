@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Common.Collections.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ReferenceBook.Domain.AggregatesModel.CountryAggregate;
 using ReferenceBook.Domain.AggregatesModel.LanguageAggregate;
@@ -16,18 +17,30 @@ namespace ReferenceBook.Api.Infrastructure
 {
     public class ReferenceBookContextSeed
     {
-        public async Task SeedAsync(ReferenceBookContext context, IWebHostEnvironment env, ILogger<ReferenceBookContextSeed> logger)
+        private readonly ReferenceBookContext context;
+        private readonly IHostEnvironment env;
+        private readonly ILogger<ReferenceBookContextSeed> logger;
+
+        public ReferenceBookContextSeed(
+            ReferenceBookContext context,
+            IHostEnvironment env,
+            ILogger<ReferenceBookContextSeed> logger
+        )
         {
-            await using (context)
-            {
-                context.Database.Migrate();
+            this.context = context;
+            this.env = env;
+            this.logger = logger;
+        }
 
-                if (!context.Countries.Any()) GetCountriesFromFile(env.ContentRootPath, logger);
+        public async Task SeedAsync()
+        {
+            if (!context.Countries.Any())
+                GetCountriesFromFile(env.ContentRootPath, logger);
 
-                if (!context.Languages.Any()) GetLanguagesFromFile(env.ContentRootPath, logger);
+            if (!context.Languages.Any())
+                GetLanguagesFromFile(env.ContentRootPath, logger);
 
-                await context.SaveChangesAsync();
-            }
+            await context.SaveChangesAsync();
         }
 
         private static IEnumerable<Country> GetCountriesFromFile(string contentRootPath, ILogger logger)

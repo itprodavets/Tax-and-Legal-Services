@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ReferenceBook.Api.Infrastructure;
 using ReferenceBook.Api.Infrastructure.Configurations;
 using ReferenceBook.Application.Queries.Implementations;
 using ReferenceBook.Application.Queries.Interfaces;
@@ -12,7 +13,7 @@ namespace ReferenceBook.Api
     public class Startup
     {
         public IConfigurationRoot Configuration { get; }
-        public Startup(IWebHostEnvironment env)
+        public Startup(IHostEnvironment env)
         {
             Configuration = new ConfigurationBuilder()
                            .SetBasePath(env.ContentRootPath)
@@ -24,19 +25,25 @@ namespace ReferenceBook.Api
         {
             services.AddCustomMvc(Configuration)
                     .AddCustomDbContext(Configuration);
-                    // .AddCustomSwagger();
+            // .AddCustomSwagger();
 
             var cfg = Configuration.Get<Configuration>();
             var connectionString = cfg.Db.ToConnectionString();
 
             services.AddScoped<ICountryQueries, CountryQueries>(_ => new CountryQueries(connectionString));
             services.AddScoped<ILanguageQueries, LanguageQueries>(_ => new LanguageQueries(connectionString));
+            services.AddScoped<ReferenceBookContextSeed>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IHostEnvironment env
+        )
         {
-            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
-            else app.UseHsts();
+            if (env.IsDevelopment())
+                app.UseDeveloperExceptionPage();
+            else
+                app.UseHsts();
 
             app.UseRouting();
             app.UseCors("CorsPolicy");
@@ -51,6 +58,11 @@ namespace ReferenceBook.Api
             {
                 endpoints.MapControllers();
             });
+
+            using var scope = app.ApplicationServices.CreateScope();
+
+            var referenceBookSeeder = scope.ServiceProvider.GetRequiredService<ReferenceBookContextSeed>();
+            referenceBookSeeder.SeedAsync().GetAwaiter().GetResult();
         }
     }
 }
