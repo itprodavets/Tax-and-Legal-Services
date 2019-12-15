@@ -9,22 +9,22 @@ using ReferenceBook.Application.Queries.Interfaces;
 
 namespace ReferenceBook.Application.Queries.Implementations
 {
-	public class CountryQueries : ICountryQueries
-	{
-		private readonly string _connectionString;
+    public class CountryQueries : ICountryQueries
+    {
+        private readonly string _connectionString;
 
-		public CountryQueries(string connectionString)
-		{
-			_connectionString = !string.IsNullOrWhiteSpace(connectionString) ? connectionString : throw new ArgumentNullException(nameof(connectionString));
-		}
+        public CountryQueries(string connectionString)
+        {
+            _connectionString = !string.IsNullOrWhiteSpace(connectionString) ? connectionString : throw new ArgumentNullException(nameof(connectionString));
+        }
 
-		public async Task<IEnumerable<CountryDto>> GetCountriesAsync()
-		{
-			await using var connection = new SqlConnection(_connectionString);
+        public async Task<IEnumerable<CountryDto>> GetCountriesAsync()
+        {
+            await using var connection = new SqlConnection(_connectionString);
 
-			connection.Open();
+            connection.Open();
 
-			return await connection.QueryAsync<CountryDto>(SQL_Resources.countries);
-		}
-	}
+            return await connection.QueryAsync<CountryDto>(SQL_Resources.countries);
+        }
+    }
 }
