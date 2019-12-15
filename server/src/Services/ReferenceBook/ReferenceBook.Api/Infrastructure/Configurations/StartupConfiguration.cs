@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
@@ -14,18 +15,14 @@ namespace ReferenceBook.Api.Infrastructure.Configurations
     {
         #region Custom Mvc
 
-        /// <summary>
-        ///     Add Mvc
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="configuration"></param>
-        /// <returns></returns>
         public static IServiceCollection AddCustomMvc(this IServiceCollection services, IConfiguration configuration)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
             services.Configure<Configuration>(configuration);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest).AddControllersAsServices();
+            services.AddMvc(option => option.EnableEndpointRouting = false)
+                    .SetCompatibilityVersion(CompatibilityVersion.Latest)
+                    .AddControllersAsServices();
 
             services.AddCors(options =>
             {
@@ -36,7 +33,6 @@ namespace ReferenceBook.Api.Infrastructure.Configurations
                                             .AllowAnyHeader()
                                             .AllowCredentials());
             });
-
             return services;
         }
 
@@ -57,14 +53,14 @@ namespace ReferenceBook.Api.Infrastructure.Configurations
                                                                                                  $"Password={config.Db.Password}"), sqlOptions =>
             {
                 sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
-                sqlOptions.EnableRetryOnFailure(10, TimeSpan.FromSeconds(30), errorCodesToAdd: null);
+                sqlOptions.EnableRetryOnFailure(10, TimeSpan.FromSeconds(30), new string[] {});
             }));
             return services;
         }
 
         #endregion
 
-        #region Swagger
+        #region Custom Swagger
 
         public static IServiceCollection AddCustomSwagger(this IServiceCollection services)
         {

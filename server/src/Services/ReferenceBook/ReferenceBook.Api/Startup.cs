@@ -30,7 +30,6 @@ namespace ReferenceBook.Api
             else app.UseHsts();
 
             app.UseRouting();
-
             app.UseCors("CorsPolicy");
             app.UseSwagger(o => { o.RouteTemplate = "api/docs/{documentName}/swagger.json"; });
             app.UseSwaggerUI(o =>
@@ -39,7 +38,10 @@ namespace ReferenceBook.Api
                 o.SwaggerEndpoint("v1/swagger.json",
                                   "Reference Book Api v1");
             });
-            app.UseMvc();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
