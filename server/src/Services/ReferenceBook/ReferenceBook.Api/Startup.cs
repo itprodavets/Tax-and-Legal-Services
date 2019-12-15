@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ReferenceBook.Api.Infrastructure.Configurations;
+using ReferenceBook.Application.Queries.Implementations;
+using ReferenceBook.Application.Queries.Interfaces;
 
 namespace ReferenceBook.Api
 {
@@ -21,9 +23,16 @@ namespace ReferenceBook.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCustomMvc(Configuration)
-                    .AddCustomDbContext(Configuration)
-                    .AddCustomSwagger();
+                    .AddCustomDbContext(Configuration);
+                    // .AddCustomSwagger();
+
+            var cfg = Configuration.Get<Configuration>();
+            var connectionString = cfg.Db.ToConnectionString();
+
+            services.AddScoped<ICountryQueries, CountryQueries>(_ => new CountryQueries(connectionString));
+            services.AddScoped<ILanguageQueries, LanguageQueries>(_ => new LanguageQueries(connectionString));
         }
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
@@ -31,13 +40,13 @@ namespace ReferenceBook.Api
 
             app.UseRouting();
             app.UseCors("CorsPolicy");
-            app.UseSwagger(o => { o.RouteTemplate = "api/docs/{documentName}/swagger.json"; });
-            app.UseSwaggerUI(o =>
-            {
-                o.RoutePrefix = "api/docs";
-                o.SwaggerEndpoint("v1/swagger.json",
-                                  "Reference Book Api v1");
-            });
+            // app.UseSwagger(o => { o.RouteTemplate = "api/docs/{documentName}/swagger.json"; });
+            // app.UseSwaggerUI(o =>
+            // {
+            //     o.RoutePrefix = "api/docs";
+            //     o.SwaggerEndpoint("v1/swagger.json",
+            //                       "Reference Book Api v1");
+            // });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
