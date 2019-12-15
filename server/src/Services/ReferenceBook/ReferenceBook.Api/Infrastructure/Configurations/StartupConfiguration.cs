@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,9 +18,7 @@ namespace ReferenceBook.Api.Infrastructure.Configurations
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
             services.Configure<Configuration>(configuration);
-            services.AddMvc(option => option.EnableEndpointRouting = false)
-                    .SetCompatibilityVersion(CompatibilityVersion.Latest)
-                    .AddControllersAsServices();
+            services.AddControllers();
 
             services.AddCors(options =>
             {
@@ -45,16 +41,17 @@ namespace ReferenceBook.Api.Infrastructure.Configurations
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
             var config = configuration.Get<Configuration>();
 
-            services.AddDbContext<ReferenceBookContext>(options => options.UseNpgsql(string.Join(';',
-                                                                                                 $"Host={config.Db.Host}",
-                                                                                                 $"Port={config.Db.Port}",
-                                                                                                 $"Database={config.Db.Name}",
-                                                                                                 $"Username={config.Db.User}",
-                                                                                                 $"Password={config.Db.Password}"), sqlOptions =>
-            {
-                sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
-                sqlOptions.EnableRetryOnFailure(10, TimeSpan.FromSeconds(30), new string[] {});
-            }));
+            services
+                .AddEntityFrameworkNpgsql()
+                .AddDbContext<ReferenceBookContext>(options => options.UseNpgsql(
+                    config.Db.ToConnectionString(),
+                    sqlOptions =>
+                    {
+                        sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
+                        sqlOptions.EnableRetryOnFailure(10, TimeSpan.FromSeconds(30), new string[] { });
+                    }
+                ));
+
             return services;
         }
 
