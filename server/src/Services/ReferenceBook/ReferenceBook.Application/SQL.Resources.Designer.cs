@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReferenceBook.Api.Application {
+namespace ReferenceBook.Application {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ReferenceBook.Api.Application {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ReferenceBook.Api.Application.SQL.Resources", typeof(SQL_Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ReferenceBook.Application.SQL.Resources", typeof(SQL_Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,10 +62,12 @@ namespace ReferenceBook.Api.Application {
         
         /// <summary>
         ///   Looks up a localized string similar to SELECT 
-        ///	[c].[Name],
-        ///	[c].[NativeName],
-        ///	[c].[Code]
-        ///FROM [Countries] AS [c].
+        ///    c.&quot;Name&quot;,
+        ///    c.&quot;Alpha2Code&quot;,
+        ///	c.&quot;Alpha3Code&quot;,
+        ///	c.&quot;Region&quot;,
+        ///	c.&quot;SubRegion&quot;
+        ///FROM db.public.&quot;Countries&quot; AS c.
         /// </summary>
         internal static string countries {
             get {
@@ -75,10 +77,10 @@ namespace ReferenceBook.Api.Application {
         
         /// <summary>
         ///   Looks up a localized string similar to SELECT 
-        ///	[l].[Name],
-        ///	[l].[NativeName],
-        ///	[l].[Code]
-        ///FROM [Languages] AS [l].
+        ///	l.&quot;Name&quot;,
+        ///	l.&quot;NativeName&quot;,
+        ///	l.&quot;Code&quot;
+        ///FROM db.public.&quot;Languages&quot; AS l.
         /// </summary>
         internal static string languages {
             get {

@@ -32,7 +32,6 @@ namespace ReferenceBook.Api
 
             services.AddScoped<ICountryQueries, CountryQueries>(_ => new CountryQueries(connectionString));
             services.AddScoped<ILanguageQueries, LanguageQueries>(_ => new LanguageQueries(connectionString));
-            services.AddScoped<ReferenceBookContextSeed>();
         }
 
         public void Configure(
@@ -58,11 +57,6 @@ namespace ReferenceBook.Api
             {
                 endpoints.MapControllers();
             });
-
-            using var scope = app.ApplicationServices.CreateScope();
-
-            var referenceBookSeeder = scope.ServiceProvider.GetRequiredService<ReferenceBookContextSeed>();
-            referenceBookSeeder.SeedAsync().GetAwaiter().GetResult();
         }
     }
 }

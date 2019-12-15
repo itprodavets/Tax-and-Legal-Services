@@ -2,48 +2,51 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using Common.Collections.Extensions;
-using Microsoft.AspNetCore.Hosting;
+using Common.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ReferenceBook.Domain.AggregatesModel.CountryAggregate;
 using ReferenceBook.Domain.AggregatesModel.LanguageAggregate;
 using ReferenceBook.Domain.Enums;
 using ReferenceBook.Infrastructure;
+using Serilog;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace ReferenceBook.Api.Infrastructure
 {
-    public class ReferenceBookContextSeed
+    public static class MigrationManager
     {
-        private readonly ReferenceBookContext context;
-        private readonly IHostEnvironment env;
-        private readonly ILogger<ReferenceBookContextSeed> logger;
-
-        public ReferenceBookContextSeed(
-            ReferenceBookContext context,
-            IHostEnvironment env,
-            ILogger<ReferenceBookContextSeed> logger
-        )
+        public static IHost MigrateDatabase(this IHost host)
         {
-            this.context = context;
-            this.env = env;
-            this.logger = logger;
+            using var scope = host.Services.CreateScope();
+            using (var context = scope.ServiceProvider.GetRequiredService<ReferenceBookContext>())
+            {
+                var env = scope.ServiceProvider.GetService<IHostEnvironment>();
+
+                try
+                {
+                    context.Database.Migrate();
+
+                    if (!context.Countries.Any())
+                        context.Countries.AddRange(GetCountriesFromFile(env.ContentRootPath));
+
+                    if (!context.Languages.Any())
+                        context.Languages.AddRange(GetLanguagesFromFile(env.ContentRootPath));
+
+                    context.SaveChangesAsync().Wait();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return host;
         }
-
-        public async Task SeedAsync()
-        {
-            if (!context.Countries.Any())
-                GetCountriesFromFile(env.ContentRootPath, logger);
-
-            if (!context.Languages.Any())
-                GetLanguagesFromFile(env.ContentRootPath, logger);
-
-            await context.SaveChangesAsync();
-        }
-
-        private static IEnumerable<Country> GetCountriesFromFile(string contentRootPath, ILogger logger)
+        private static IEnumerable<Country> GetCountriesFromFile(string contentRootPath)
         {
             var csvFileCountries = Path.Combine(contentRootPath, "Setup", "Countries.csv");
             if (!File.Exists(csvFileCountries)) throw new Exception("File is not exists");
@@ -64,7 +67,7 @@ namespace ReferenceBook.Api.Infrastructure
                        .SelectTry(CreateCountry)
                        .OnCaughtException(ex =>
                         {
-                            logger.LogError(ex, "EXCEPTION ERROR: {Message}", ex.Message);
+                            Log.Fatal(ex, "EXCEPTION ERROR: {Message}", ex.Message);
                             return null!;
                         })
                         .OfType<Country>();
@@ -75,10 +78,16 @@ namespace ReferenceBook.Api.Infrastructure
             if (string.IsNullOrEmpty(value))
                 throw new Exception("Country is null or empty");
 
-            return new Country("", Alpha2Code.AD, Alpha3Code.ABW, 0, Region.Africa, SubRegion.Caribbean);
+            var list = value.Split(",").ToArray();
+            return new Country(list[0].ToString(),
+                               list[1].ToEnum<Alpha2Code>(),
+                               list[2].ToEnum<Alpha3Code>(),
+                               Convert.ToInt16(list[3]),
+                               list[4].ToEnum<Region>(),
+                               list[5]);
         }
 
-        private static IEnumerable<Language> GetLanguagesFromFile(string contentRootPath, ILogger logger)
+        private static IEnumerable<Language> GetLanguagesFromFile(string contentRootPath)
         {
             var csvFileLanguages = Path.Combine(contentRootPath, "Setup", "Languages.csv");
             if (!File.Exists(csvFileLanguages)) throw new Exception("File is not exists");
@@ -99,7 +108,7 @@ namespace ReferenceBook.Api.Infrastructure
                        .SelectTry(CreateLanguage)
                        .OnCaughtException(ex =>
                         {
-                            logger.LogError(ex, "EXCEPTION ERROR: {Message}", ex.Message);
+                            Log.Fatal(ex, "EXCEPTION ERROR: {Message}", ex.Message);
                             return null!;
                         })
                         .OfType<Language>();
@@ -110,13 +119,13 @@ namespace ReferenceBook.Api.Infrastructure
             if (string.IsNullOrEmpty(value))
                 throw new Exception("Language is null or empty");
 
-            return new Language("", "", LanguageCode.AA);
+            var list = value.Split(",").ToArray();
+            return new Language(list[0].ToString(),list[1].ToString(), list[2].ToEnum<LanguageCode>());
         }
-
 
         private static string[] GetHeaders(string[] requiredHeaders, string csvFile)
         {
-            var csvHeaders = File.ReadLines(csvFile).First().ToLowerInvariant().Split(',');
+            var csvHeaders = File.ReadLines(csvFile).First().Split(',');
 
             if (csvHeaders.Count() != requiredHeaders.Count())
                 throw new Exception($"requiredHeader count '{requiredHeaders.Count()}' is different then read header '{csvHeaders.Count()}'");

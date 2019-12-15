@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Dapper;
-using ReferenceBook.Api.Application;
+using Npgsql;
 using ReferenceBook.Application.Dto.Countries;
 using ReferenceBook.Application.Queries.Interfaces;
 
@@ -20,7 +20,7 @@ namespace ReferenceBook.Application.Queries.Implementations
 
         public async Task<IEnumerable<CountryDto>> GetCountriesAsync()
         {
-            await using var connection = new SqlConnection(_connectionString);
+            await using var connection = new NpgsqlConnection(_connectionString);
 
             connection.Open();
 

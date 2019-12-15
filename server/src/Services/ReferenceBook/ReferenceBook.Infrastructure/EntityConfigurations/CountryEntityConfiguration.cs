@@ -16,7 +16,6 @@ namespace ReferenceBook.Infrastructure.EntityConfigurations
 			builder.Property(e => e.Alpha2Code).HasConversion(new EnumToStringConverter<Alpha2Code>());
 			builder.Property(e => e.Alpha3Code).HasConversion(new EnumToStringConverter<Alpha3Code>());
 			builder.Property(e => e.Region).HasConversion(new EnumToStringConverter<Region>());
-			builder.Property(e => e.SubRegion).HasConversion(new EnumToStringConverter<SubRegion>());
-		}
+        }
 	}
 }
