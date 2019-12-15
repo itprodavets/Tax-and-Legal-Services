@@ -6,10 +6,6 @@ namespace ReferenceBook.Application.Queries.Interfaces
 {
 	public interface ICountryQueries
 	{
-		/// <summary>
-		///  Get Countries
-		/// </summary>
-		/// <returns></returns>
-		Task<IEnumerable<CountryDto>> GetCountriesAsync();
+        Task<IEnumerable<CountryDto>> GetCountriesAsync();
 	}
 }

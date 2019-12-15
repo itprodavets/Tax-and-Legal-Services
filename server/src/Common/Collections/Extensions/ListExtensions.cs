@@ -43,8 +43,8 @@ namespace Common.Collections.Extensions
         private static void SortByDependenciesVisit<T>(
             T item,
             Func<T, IEnumerable<T>> getDependencies,
-            List<T> sorted,
-            Dictionary<T, bool> visited
+            ICollection<T> sorted,
+            IDictionary<T, bool> visited
         )
         where T : notnull
         {

@@ -6,10 +6,6 @@ namespace ReferenceBook.Application.Queries.Interfaces
 {
 	public interface ILanguageQueries
 	{
-		/// <summary>
-		///  Get Languages
-		/// </summary>
-		/// <returns></returns>
-		Task<IEnumerable<LanguageDto>> GetLanguagesAsync();
+        Task<IEnumerable<LanguageDto>> GetLanguagesAsync();
 	}
 }

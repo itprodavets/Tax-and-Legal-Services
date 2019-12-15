@@ -18,10 +18,6 @@ namespace ReferenceBook.Application.Queries.Implementations
 			_connectionString = !string.IsNullOrWhiteSpace(connectionString) ? connectionString : throw new ArgumentNullException(nameof(connectionString));
 		}
 
-		/// <summary>
-		///  Get Countries
-		/// </summary>
-		/// <returns></returns>
 		public async Task<IEnumerable<CountryDto>> GetCountriesAsync()
 		{
 			await using var connection = new SqlConnection(_connectionString);
