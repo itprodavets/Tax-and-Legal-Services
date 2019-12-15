@@ -14,7 +14,11 @@ ref-books-db-log ref-books-api-log cbc-report-api-log client-log:
 
 
 ref-books-db-drop ref-books-db-update ref-books-migrations-add ref-books-migrations-list ref-books-migrations-remove:
-	@cd server && pwsh tools/ef/$@.ps1 -startup src/Annium.Id.Api -project src/Annium.Id.Db -context Context
+	$(eval cmd:= $(subst ref-books-,,$@))
+	@cd server && pwsh tools/ef/$(cmd).ps1 \
+		-startup src/Services/ReferenceBook/ReferenceBook.Api \
+		-project src/Services/ReferenceBook/ReferenceBook.Api \
+		-context ReferenceBookContext
 
 # https://github.com/aspnet/EntityFrameworkCore/issues/18292 - to cleanup migrations flow
 publish-api:
