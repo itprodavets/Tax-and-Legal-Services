@@ -1,0 +1,14 @@
+FROM node:alpine as builder
+COPY . /src/
+WORKDIR /src/
+RUN npm install && npm install -g @vue/cli
+RUN npm run lint
+RUN npm run build
+
+FROM nginx:alpine
+RUN rm /etc/nginx/conf.d/default.conf
+COPY --from=builder /src/build /src/docker-entrypoint.sh /site/
+COPY --from=builder /src/site.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+WORKDIR /site
+ENTRYPOINT [ "./docker-entrypoint.sh" ]

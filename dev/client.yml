@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  ref-books-api:
+    build:
+      context: ../client
+      dockerfile: Dockerfile
+    image: tl_client
+    container_name: tl_client
+    restart: always
+    ports:
+      - '9100:80'
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
+        max-file: '1'
+networks:
+  default:
+    external:
+      name: tl_net
