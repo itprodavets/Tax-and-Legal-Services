@@ -1,8 +1,7 @@
 FROM node:alpine as builder
 COPY . /src/
 WORKDIR /src/
-RUN npm install && npm install -g @vue/cli
-RUN npm run lint
+RUN npm install
 RUN npm run build
 
 FROM nginx:alpine
