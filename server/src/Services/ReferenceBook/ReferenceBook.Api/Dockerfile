@@ -5,5 +5,4 @@ RUN dotnet publish -c release -o /app /code/src/Services/ReferenceBook/Reference
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine
 WORKDIR /app
 COPY --from=builder /app /app
-RUN ls -la
 CMD ["/app/ReferenceBook.Api"]

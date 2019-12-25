@@ -1,5 +1,5 @@
 PROJECT_NAME := tl
-TAG_PREFIX := registry.annium.com/$(PROJECT_NAME)
+TAG_PREFIX := registry.dka.services/$(PROJECT_NAME)
 
 ref-books-db-up ref-books-api-up cbc-report-api-up client-up:
 	@pwsh dev/scripts/net-up.ps1 -project $(PROJECT_NAME)
@@ -20,13 +20,11 @@ ref-books-db-drop ref-books-db-update ref-books-migrations-add ref-books-migrati
 		-project src/Services/ReferenceBook/ReferenceBook.Api \
 		-context ReferenceBookContext
 
-# https://github.com/aspnet/EntityFrameworkCore/issues/18292 - to cleanup migrations flow
-publish-api:
-	$(call publish,migrations,server,src/Annium.Id.Api/migrations.Dockerfile)
-	$(call publish,api,server,src/Annium.Id.Api/api.Dockerfile)
+publish-ref-books-api:
+	$(call publish,ref-books-api,server,src/Services/ReferenceBook/ReferenceBook.Api/Dockerfile)
 
-publish-site:
-	$(call publish,site,web/src/site,Dockerfile)
+publish-client:
+	$(call publish,client,client,Dockerfile)
 
 
 define publish

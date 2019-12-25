@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  api:
+  ref-books-api:
     build:
       context: ../server
       dockerfile: src/Services/ReferenceBook/ReferenceBook.Api/Dockerfile
@@ -8,10 +8,9 @@ services:
     container_name: tl_ref_books_api
     restart: always
     ports:
-      - '9502:80'
+      - '9101:80'
     volumes:
-      - '../run/configuration:/app/configuration'
-      - '../run/keys:/app/keys'
+      - '../run/server/appsettings.json:/app/appsettings.json'
     logging:
       driver: json-file
       options:

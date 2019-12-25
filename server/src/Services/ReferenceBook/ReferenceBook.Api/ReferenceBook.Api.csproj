@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
     <PropertyGroup>
         <PackageId>ReferenceBook.Api</PackageId>
         <PackageVersion>0.1.0</PackageVersion>
@@ -16,12 +16,15 @@
         <ProjectReference Include="../ReferenceBook.Infrastructure/ReferenceBook.Infrastructure.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Setup" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.0" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+        <PackageReference Include="NSwag.AspNetCore" Version="13.1.6" />
+        <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.0" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
-      <PackageReference Include="NSwag.AspNetCore" Version="13.1.6" />
-      <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+        <None Update="Setup/*.csv" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Setup" />
     </ItemGroup>
 </Project>

@@ -69,7 +69,8 @@ namespace ReferenceBook.Api.Infrastructure
                             Log.Fatal(ex, "EXCEPTION ERROR: {Message}", ex.Message);
                             return null!;
                         })
-                        .OfType<Country>();
+                        .OfType<Country>()
+                        .ToArray();
         }
 
         private static Country CreateCountry(string value)
@@ -110,7 +111,8 @@ namespace ReferenceBook.Api.Infrastructure
                             Log.Fatal(ex, "EXCEPTION ERROR: {Message}", ex.Message);
                             return null!;
                         })
-                        .OfType<Language>();
+                        .OfType<Language>()
+                        .ToArray();
         }
 
         private static Language CreateLanguage(string value)
