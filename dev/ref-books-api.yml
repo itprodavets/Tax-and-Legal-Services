@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  ref-books-api:
+    build:
+      context: ../server
+      dockerfile: src/Services/ReferenceBook/ReferenceBook.Api/Dockerfile
+    image: tl_ref_books_api
+    container_name: tl_ref_books_api
+    restart: always
+    ports:
+      - '9101:80'
+    volumes:
+      - '../run/server/ref-books/appsettings.json:/app/appsettings.json'
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
+        max-file: '1'
+networks:
+  default:
+    external:
+      name: tl_net

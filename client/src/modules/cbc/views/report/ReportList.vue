@@ -1,0 +1,45 @@
+<template>
+    <v-container class="pa-0 pt-2">
+        <v-toolbar dense class="elevation-1">
+            <template>
+                <v-btn dense icon @click="onCreate()">
+                    <v-icon>mdi-plus-circle</v-icon>
+                </v-btn>
+            </template>
+            <v-toolbar-title>Reports</v-toolbar-title>
+        </v-toolbar>
+        <ReportListComponent :reports="this.$store.state.cbc.report.entities"/>
+    </v-container>
+</template>
+<script lang="ts">
+	import {Component, Vue} from "vue-property-decorator";
+	import {ReportCreateRequest, ReportRequest} from "@/modules/cbc/models";
+	import ReportListComponent from "@/modules/cbc/components/list/report/ReportList.vue";
+	import {Guid} from "@/core/common/guid";
+
+	@Component({
+		components: {
+			ReportListComponent
+		}
+	})
+	export default class ReportListView extends Vue {
+		public created() {
+			this.$store.dispatch("cbc/report/list", {
+				id: this.$route.params["id"]
+			} as ReportRequest);
+		}
+
+		public onCreate() {
+			const report = {
+				id: Guid.create().toString(),
+				reportDataId: this.$route.params["id"]
+			} as ReportCreateRequest;
+			this.$store.dispatch("cbc/report/create", report).then(() => {
+				this.$router.push({
+					name: "constituent.entity",
+					params: {id: report.reportDataId.toString(), reportId: report.id.toString()}
+				});
+			});
+		}
+	}
+</script>

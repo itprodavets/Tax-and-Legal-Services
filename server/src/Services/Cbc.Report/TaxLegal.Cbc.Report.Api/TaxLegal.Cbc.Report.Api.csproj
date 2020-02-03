@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <PackageId>TaxLegal.Cbc.Report.Api</PackageId>
+        <PackageVersion>0.1.0</PackageVersion>
+        <Description></Description>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <DebugType>portable</DebugType>
+        <LangVersion>8</LangVersion>
+        <WarningsAsErrors>true</WarningsAsErrors>
+        <IsPackable>false</IsPackable>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="../TaxLegal.Cbc.Report.Application/TaxLegal.Cbc.Report.Application.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
+        <PackageReference Include="NSwag.AspNetCore" Version="13.1.6" />
+        <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+        <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.0" />
+    </ItemGroup>
+</Project>
