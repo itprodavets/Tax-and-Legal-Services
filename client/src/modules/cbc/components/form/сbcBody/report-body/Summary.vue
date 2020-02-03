@@ -314,7 +314,7 @@
 	})
 	export default class SummaryComponent extends Mixins(CbcMixin) {
 		@Prop()
-		public readonly!: boolean;
+		public readonly readonly!: boolean;
 
 		@Prop()
 		public currencies!: Currency[];

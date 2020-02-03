@@ -1,17 +1,24 @@
-import {ActionContext, ActionTree} from "vuex";
-import {ReportState} from "./report.state";
-import {ReportDataState} from "../cbc.state";
 import _ from "lodash";
-import {Report, ReportCreateRequest, ReportRequest} from "../../models";
+import {ActionContext, ActionTree} from "vuex";
+import {Report, ReportCreateRequest, ReportData, ReportRequest} from "../../models";
+import {ReportDataState} from "../cbc.state";
+import {ReportState} from "./report.state";
 
 export const actions: ActionTree<ReportState, ReportDataState> = {
     list: async (
         action: ActionContext<ReportState, ReportDataState>,
         request: ReportRequest
     ) => {
-        const reportData = _.find(action.rootState.entities, x => x.id === request.reportDataId);
-        if (reportData) action.commit("GET_REPORT_LIST", reportData.reports);
-        else action.commit("GET_REPORT_LIST", []);
+        let data = action.rootGetters["cbc/entity"] as ReportData;
+        if (data && data.id === request.reportDataId)
+            action.commit("GET_REPORT_LIST", data.reports);
+        else {
+            data = _.find(action.rootGetters["cbc/entities"], (x: ReportData) => x.id === request.reportDataId);
+            if (data)
+                action.commit("GET_REPORT_LIST", data.reports);
+            else
+                action.commit("GET_REPORT_LIST", []);
+        }
     },
     get: async (
         action: ActionContext<ReportState, ReportDataState>,

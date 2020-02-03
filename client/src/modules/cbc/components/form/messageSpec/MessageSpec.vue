@@ -1,5 +1,5 @@
 <template>
-    <v-container class="pa-0">
+    <v-container fluid class="pa-0">
         <v-row align="center" justify="space-between">
             <v-col cols="12" lg="2" md="2">
                 <v-autocomplete
@@ -184,6 +184,8 @@
     </v-container>
 </template>
 <script lang="ts">
+	import {CountryEnumMixin} from "@/modules/country/mixins/country-enum";
+    import {CountryEnum} from "@/modules/country/models";
 	import {Component, Mixins, Prop, Watch} from "vue-property-decorator";
 	import {validationMixin} from "vuelidate";
 	import moment from "moment";
@@ -191,7 +193,7 @@
 	import {Language} from "@/modules/language/models/dto.model";
 	import {Country} from "@/modules/country/models/dto.model";
 	import {CbcMixin} from "@/modules/cbc/mixins";
-	import {CountryEnum, LanguageEnum, Message, MessageTypeEnum, MessageTypeIndicEnum} from "@/modules/cbc/models";
+	import {LanguageEnum, Message, MessageTypeEnum, MessageTypeIndicEnum} from "@/modules/cbc/models";
 
 	@Component({
 		components: {},
@@ -227,22 +229,22 @@
 			}
 		}
 	})
-	export default class MessageSpecComponent extends Mixins(CbcMixin) {
+	export default class MessageSpecComponent extends Mixins(CbcMixin, CountryEnumMixin) {
 		@Prop()
 		public languages!: Language[];
 
 		@Prop()
-		public countries!: Country[];
+		public readonly countries!: Country[];
 
 		@Prop()
-		public readonly!: boolean;
+		public readonly readonly!: boolean;
 
 		@Watch("message", {deep: true})
 		onMessageChanged(value: Message, oldValue: Message) {
 			this.$data.message.refId = this.onGenerateMessageRefId(
-				this.onGetCountryEnum(this.$data.message.jurisdiction),
+				this.getCountryEnums(this.$data.message.jurisdiction),
 				this.onGetYear(value.reportingPeriod),
-				this.onGetCountryEnum(this.$data.message.jurisdictions)
+				this.getCountryEnums(this.$data.message.jurisdictions)
 			);
 		}
 

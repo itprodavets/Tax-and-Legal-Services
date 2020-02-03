@@ -9,7 +9,7 @@
 	})
 	export default class ConstituentEntityComponent extends Vue {
 		@Prop()
-		public readonly!: boolean;
+		public readonly readonly!: boolean;
 	}
 </script>
 <style lang="scss" scoped>

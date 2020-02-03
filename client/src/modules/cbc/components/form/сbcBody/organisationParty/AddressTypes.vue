@@ -1,87 +1,59 @@
 <template>
-    <v-container class="pa-0">
-        <div class="subtitle-1 text-uppercase mb-2">addresses</div>
-        <v-divider class="mb-4"></v-divider>
-        <v-row>
-            <v-col cols="12">
-                <AddressTypeComponent
-                        v-for="country in countries"
-                        :key="country.alpha2Code"
-                        v-model="address"
-                        :readonly="readonly"
-                        :country="country"
-                        :countries="countries"
-                />
-            </v-col>
-        </v-row>
-    </v-container>
+	<v-data-iterator
+			:items="addresses"
+			:items-per-page.sync="itemsPerPage"
+			hide-default-footer
+	>
+		<template v-slot:header>
+			<div class="d-flex justify-start align-center">
+				<v-btn @click="onAdd()" dense icon>
+					<v-icon>mdi-plus-circle</v-icon>
+				</v-btn>
+				<div class="subtitle-1 text-uppercase" style="width: 100%">Addresses</div>
+			</div>
+			<v-divider class="mb-4"></v-divider>
+		</template>
+
+		<template v-slot:default="{ items }">
+			<AddressTypeComponent v-for="item in items" :key="item.id"
+			                      :address.sync="item" :readonly="readonly"
+			                      :countries="countries" @remove="onRemove"/>
+		</template>
+	</v-data-iterator>
 </template>
 <script lang="ts">
-	import _ from "lodash";
-	import {Component, Prop, Vue, Watch} from "vue-property-decorator";
-	import AddressTypeComponent from "./AddressType.vue";
-	import {Country} from "@/modules/country/models/dto.model";
+	import {Guid} from "@/core/common/guid";
+	import {CbcMixin} from "@/modules/cbc/mixins";
 	import {Address} from "@/modules/cbc/models";
+	import {CountryEnumMixin} from "@/modules/country/mixins";
+	import {Country} from "@/modules/country/models/dto.model";
+	import {Component, Mixins, Prop, PropSync} from "vue-property-decorator";
+	import AddressTypeComponent from "./AddressType.vue";
 
 	@Component({
 		components: {
 			AddressTypeComponent
 		}
 	})
-	export default class AddressTypesComponent extends Vue {
+	export default class AddressTypesComponent extends Mixins(CbcMixin, CountryEnumMixin) {
 		@Prop()
-		public readonly!: boolean;
+		public readonly readonly!: boolean;
 		@Prop()
-		public countries!: Country[];
+		public readonly countries!: Country[];
 
-		public data() {
-			return {
-				address: {} as Address,
-				addresses: [] as Array<Address>
-			};
+		@PropSync('addresses', {type: Array, default: () => []})
+		public values!: Array<Address>;
+
+		public itemsPerPage: number = 5;
+
+		public onAdd() {
+			this.values.unshift({
+				id: Guid.create().toString()
+			} as Address)
 		}
 
-		@Watch("countries")
-		onCountriesChanged(values: Country[], oldValues: Country[]) {
-			_.forEach<Country>(oldValues, oldValue => {
-				if (!_.some(values, value => value.alpha2Code === oldValue.alpha2Code)) {
-					const addresses = _.filter(
-						this.$data.addresses as Address[],
-						x => x.jurisdiction.toString() === oldValue.alpha2Code
-					);
-					_.forEach(addresses, address => {
-						const element = document.getElementById(`${address.id}`);
-						if (element) element.remove();
-						_.remove(this.$data.addresses, (a: Address) => a.id === address.id);
-						this.$emit("input", this.$data.addresses);
-					});
-				}
-			});
-		}
-
-		public onAddComponent() {}
-
-		@Watch("address")
-		onAddressChanged(value: Address, oldValue: Address) {
-			const addresses = this.$data.addresses as Address[];
-			const index = _.findIndex(addresses, x => x.id === value.id);
-
-			if (index === -1) addresses.push(value);
-			else {
-				addresses[index].jurisdiction = value.jurisdiction;
-				addresses[index].type = value.type;
-				addresses[index].fix = value.fix;
-				addresses[index].free = value.free;
-			}
-		}
-
-		@Watch("addresses", {deep: true})
-		onAddressesChanged(values: Address[], oldValues: Address[]) {
-			this.onSave();
-		}
-
-		public onSave() {
-			this.$emit("input", this.$data.addresses);
+		public onRemove(id: string | number) {
+			this.values = this.values.filter(x => x.id !== id);
 		}
 	}
 </script>

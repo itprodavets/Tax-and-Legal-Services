@@ -1,24 +1,24 @@
-import axios from "axios";
+import axios, {AxiosInstance, AxiosRequestConfig} from "axios";
 
-const baseDomain = `${process.env.VUE_APP_ROOT_API}/v1`;
-const baseURL = `${baseDomain}/api`;
+class Api {
+  private baseDomain = `${process.env.VUE_APP_ROOT_API}/v1`;
+  private baseURL = `${this.baseDomain}`;
+  
+  private get config(): AxiosRequestConfig {
+    return {
+      baseURL: this.baseURL,
+      withCredentials: false,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      timeout: 10000
+    } as AxiosRequestConfig;
+  }
+  
+  public createInstance(config?: AxiosRequestConfig): AxiosInstance {
+    return axios.create(Object.assign(this.config, config));
+  }
+}
 
-const instance = axios.create({
-  baseURL,
-  withCredentials: false,
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json"
-  },
-  timeout: 10000
-});
-
-instance.interceptors.request.use((config: any) => {
-  return config;
-});
-
-instance.interceptors.response.use((response: any) => {
-  return response;
-});
-
-export default instance;
+export default new Api;

@@ -1,5 +1,5 @@
 <template>
-    <v-container class="pa-0">
+    <v-container fluid>
         <DocSpecComponent :readonly="readonly"/>
         <v-row>
             <v-col cols="12" lg="4" md="4">
@@ -86,10 +86,10 @@
 		public languages!: Language[];
 
 		@Prop()
-		public countries!: Country[];
+		public readonly countries!: Country[];
 
 		@Prop()
-		public readonly!: boolean;
+		public readonly readonly!: boolean;
 
 		public data() {
 			return {

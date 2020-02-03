@@ -1,5 +1,5 @@
 <template>
-    <v-container class="pa-0">
+    <v-container fluid class="pa-0">
         <OrganisationPartyComponent
                 v-model="$v.constituentEntity.organisation.$model"
                 :readonly="readonly"
@@ -58,9 +58,11 @@
     </v-container>
 </template>
 <script lang="ts">
+	import {CountryEnumMixin} from "@/modules/country/mixins/country-enum";
+    import {CountryEnum} from "@/modules/country/models";
 	import {Component, Mixins, Prop, Watch} from "vue-property-decorator";
 	import {validationMixin} from "vuelidate";
-	import {ConstituentEntity, CountryEnum, Organisation} from "@/modules/cbc/models";
+    import {BizActivityTypeEnum, ConstituentEntity, Organisation, UltimateParentEntityRoleEnum} from "@/modules/cbc/models";
 	import {Country} from "@/modules/country/models/dto.model";
 	import {CbcMixin} from "@/modules/cbc/mixins";
 
@@ -83,12 +85,12 @@
 			}
 		}
 	})
-	export default class ConstituentEntityComponent extends Mixins(CbcMixin) {
+	export default class ConstituentEntityComponent extends Mixins(CbcMixin, CountryEnumMixin) {
 		@Prop()
-		public countries!: Country[];
+		public readonly countries!: Country[];
 
 		@Prop()
-		public readonly!: boolean;
+		public readonly readonly!: boolean;
 
 		@Prop()
 		public value!: ConstituentEntity;
@@ -102,9 +104,9 @@
 			return {
 				constituentEntity: {
 					id: "",
-					role: {} as ReferenceBook,
+					role: {} as ReferenceBook<UltimateParentEntityRoleEnum>,
 					jurisdiction: {} as Country,
-					bizActivities: [] as ReferenceBook[],
+					bizActivities: [] as ReferenceBook<BizActivityTypeEnum>[],
 					otherInfo: "",
 					organisation: {} as Organisation
 				}
@@ -132,9 +134,9 @@
 				if (organisation) {
 					const data = {
 						id: this.$data.constituentEntity.id,
-						role: this.onGetIdReferenceBook(this.$data.constituentEntity.role),
-						jurisdiction: this.onGetCountryEnum(this.$data.constituentEntity.jurisdiction),
-						bizActivities: this.onGetIdReferenceBook(this.$data.constituentEntity.bizActivities),
+						role: (this.$data.constituentEntity.role as ReferenceBook<UltimateParentEntityRoleEnum>).id,
+						jurisdiction: this.getCountryEnum(this.$data.constituentEntity.jurisdiction),
+						bizActivities: (this.$data.constituentEntity.bizActivities as ReferenceBook<BizActivityTypeEnum>[]).map(x => x.id),
 						otherInfo: this.$data.constituentEntity.otherInfo,
 						organisation: organisation
 					} as ConstituentEntity;

@@ -1,5 +1,5 @@
 <template>
-    <v-container class="pa-0">
+    <v-container fluid class="pa-0">
         <div v-if="drawer">
             <v-toolbar dense class="elevation-1">
                 <template>
@@ -78,7 +78,9 @@
 				reportId: this.reportId
 			} as ConstituentEntityRequest;
 			this.$store.dispatch("country/list");
-			this.$store.dispatch("cbc/report/constituentEntity/list", request);
+			this.$store.dispatch("cbc/report/get", this.reportId).then(() => {
+				this.$store.dispatch("cbc/report/constituentEntity/list", request);
+            });
 		}
 
 		public onCreate() {

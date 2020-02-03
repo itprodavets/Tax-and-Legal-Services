@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex, {StoreOptions} from "vuex";
 import VuexPersistence from "vuex-persist";
-import {RootState} from "./root.state";
+import {RootState} from "src/core/store/root.state";
 
 import {cbc} from "@/modules/cbc/store";
 import {country} from "@/modules/country/store";

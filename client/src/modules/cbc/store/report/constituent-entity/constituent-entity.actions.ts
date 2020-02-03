@@ -1,7 +1,7 @@
 import {ActionContext, ActionTree} from "vuex";
 import {ConstituentEntityState} from "./constituent-entity.state";
 import {ReportState} from "../report.state";
-import {ConstituentEntityCreateRequest, ConstituentEntityRequest} from "@/modules/cbc/models";
+import {ConstituentEntityCreateRequest, ConstituentEntityRequest, Report, ReportData} from "@/modules/cbc/models";
 import _ from "lodash";
 import {Guid} from "@/core/common/guid";
 
@@ -10,9 +10,16 @@ export const actions: ActionTree<ConstituentEntityState, ReportState> = {
 		action: ActionContext<ConstituentEntityState, ReportState>,
 		request: ConstituentEntityRequest
 	) => {
-		const report = _.find(action.rootState.entities, x => x.id === request.reportId);
-		if (report) action.commit("GET_CONSTITUENT_ENTITY_LIST", report.constituentEntities);
-		else action.commit("GET_CONSTITUENT_ENTITY_LIST", []);
+		let data = action.rootGetters["cbc/report/report"] as Report;
+		if (data && data.id === request.reportId)
+			action.commit("GET_CONSTITUENT_ENTITY_LIST", data.constituentEntities);
+		else {
+			data = _.find(action.rootGetters["cbc/report/reports"], (x: Report) => x.id === request.reportId);
+			if (data)
+				action.commit("GET_CONSTITUENT_ENTITY_LIST", data.constituentEntities);
+			else
+				action.commit("GET_CONSTITUENT_ENTITY_LIST", []);
+		}
 	},
 	get: async (
 		action: ActionContext<ConstituentEntityState, ReportState>,

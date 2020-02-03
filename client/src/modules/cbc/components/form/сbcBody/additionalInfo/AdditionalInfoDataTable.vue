@@ -54,7 +54,7 @@
 		public languages!: Language[];
 
 		@Prop()
-		public countries!: Country[];
+		public readonly countries!: Country[];
 
 		public readonly: boolean = true;
 

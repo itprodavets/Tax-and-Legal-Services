@@ -1,10 +1,11 @@
 import {ApiCrudService} from "@/core/services/api.crud.service";
-import {AxiosRequestConfig} from 'axios';
 
 class CurrencyService extends ApiCrudService<number, any, any> {
   constructor() {
-    super("currencies");
-    this.requestConfig = {baseURL: `${process.env.VUE_APP_REF_BOOKS_API}/v1`} as AxiosRequestConfig;
+    super("currencies", {
+      baseURL: `${process.env.VUE_APP_REF_BOOKS_API}/v1`
+    });
+    //    this.requestConfig = {baseURL: `${process.env.VUE_APP_REF_BOOKS_API}/v1`} as AxiosRequestConfig;
   }
 }
 

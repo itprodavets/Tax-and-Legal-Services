@@ -1,5 +1,5 @@
 <template>
-	<v-container class="pa-0">
+	<v-container fluid class="pa-0">
 		<MessageSpecComponent
                 :countries="this.$store.state.country.entities"
                 :languages="this.$store.state.language.entities"

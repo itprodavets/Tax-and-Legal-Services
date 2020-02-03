@@ -1,31 +1,48 @@
 import {ApiCrudService} from "@/core/services/api.crud.service";
-import api from "@/core/services/api";
-import {AxiosRequestConfig, AxiosResponse} from "axios";
-import {ReportData, ReportDataImportRequest} from "../models";
+import {AxiosResponse} from "axios";
+import {ReportData, ReportDataParseRequest, ReportDataValidationRequest, ValidationMessage} from "../models";
 
 class CbcService extends ApiCrudService<number, any, any> {
 	constructor() {
-		super("cbc");
-		this.requestConfig = {
+		super("reports", {
 			baseURL: `${process.env.VUE_APP_CBC_REPORT_API}/v1`
-		} as AxiosRequestConfig;
-	}
-	
-	public xmlToModel(request: ReportDataImportRequest): Promise<AxiosResponse<ReportData[]>> {
-		return api.get<ReportData[]>(`xmlToModel`, {
-			params: request
 		});
 	}
 	
-	public modelToXml(request: any): Promise<AxiosResponse<void>> {
-		return api.get<void>(`modelToXml`, {
-			params: request
+	public parse(request: ReportDataParseRequest): Promise<AxiosResponse<ReportData>> {
+		const params = new URLSearchParams();
+		params.append("schema", request.schema);
+		
+		const data = new FormData();
+		data.append("file", request.file);
+		
+		return this.instance.post<ReportData>(`reports/parse`, data, {
+			params: params,
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
 		});
 	}
 	
-	public xmlValidate(request: any): Promise<AxiosResponse<any>> {
-		return api.get<any>(`xmlValidate`, {
-			params: request
+	public generation(request: any): Promise<AxiosResponse> {
+		return this.instance.get(`reports/parse`, {
+			params: request,
+			responseType: "blob"
+		});
+	}
+	
+	public validate(request: ReportDataValidationRequest): Promise<AxiosResponse<ValidationMessage>> {
+		const params = new URLSearchParams();
+		params.append("schema", request.schema);
+		
+		const data = new FormData();
+		data.append("file", request.file);
+		
+		return this.instance.post<ValidationMessage>(`reports/validate`, data, {
+			params: params,
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
 		});
 	}
 }

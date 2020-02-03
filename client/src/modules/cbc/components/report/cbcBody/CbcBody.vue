@@ -25,7 +25,7 @@
 		public languages!: Language[];
 
 		@Prop()
-		public countries!: Country[];
+		public readonly countries!: Country[];
 	}
 </script>
 <style lang="scss" scoped>

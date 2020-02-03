@@ -1,5 +1,5 @@
 <template>
-    <v-container class="cbc-reports">
+    <v-container fluid class="cbc-reports">
         <DocSpecComponent :readonly="readonly"/>
         <v-row>
             <v-col cols="12" lg="3" md="3">
@@ -40,10 +40,10 @@
 	})
 	export default class CbcReportsComponent extends Vue {
 		@Prop()
-		public countries!: Country[];
+		public readonly countries!: Country[];
 
 		@Prop()
-		public readonly!: boolean;
+		public readonly readonly!: boolean;
 
 		public data() {
 			return {

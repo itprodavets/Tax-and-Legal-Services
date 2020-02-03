@@ -4,7 +4,7 @@ import {AxiosResponse} from "axios";
 import {LanguageState} from "./language.state";
 import {Language} from "../models/dto.model";
 import languageService from "../services/language.service";
-import {RootState} from "@/store/root.state";
+import {RootState} from "@/core/store/root.state";
 
 export const actions: ActionTree<LanguageState, RootState> = {
   list: async ({

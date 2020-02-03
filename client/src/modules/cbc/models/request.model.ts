@@ -1,9 +1,26 @@
 import {TRequest} from '@/core/models';
-import {ConstituentEntity, SupportedSchema} from "@/modules/cbc/models/dto.model.js";
+import {ConstituentEntity, ReportData, ReportingEntity} from "@/modules/cbc/models/dto.model.js";
 
 
-export interface ReportDataImportRequest {
-	schema:  SupportedSchema;
+export interface ReportDataAddRequest {
+	data: ReportData;
+}
+
+export interface ReportDataCreateRequest {
+	data: ReportData;
+}
+
+export interface ReportDataUpdateRequest {
+	data: ReportData;
+}
+
+export interface ReportDataParseRequest {
+	schema:  string;
+	file: File;
+}
+
+export interface ReportDataValidationRequest {
+	schema:  string;
 	file: File;
 }
 
@@ -24,6 +41,14 @@ export interface ConstituentEntityCreateRequest extends TRequest {
 	constituentEntity: ConstituentEntity;
 }
 
+export interface ReportingEntityRequest {
+	reportId: string | number;
+}
+
+export interface ReportingEntityAddRequest {
+	reportId: string | number;
+	reportingEntity: ReportingEntity;
+}
 
 export interface AdditionalInfoRequest extends TRequest {
 	reportId: string | number;

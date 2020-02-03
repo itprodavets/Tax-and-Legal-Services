@@ -1,5 +1,5 @@
 <template>
-    <v-container class="pa-0 pt-2">
+    <v-container fluid class="pa-0 pt-2">
         <v-toolbar dense class="elevation-1">
             <template>
                 <v-btn dense icon @click="onCreate()">
@@ -25,7 +25,7 @@
 	export default class ReportListView extends Vue {
 		public created() {
 			this.$store.dispatch("cbc/report/list", {
-				id: this.$route.params["id"]
+				reportDataId: this.$route.params["id"]
 			} as ReportRequest);
 		}
 

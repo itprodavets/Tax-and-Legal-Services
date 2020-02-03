@@ -1,38 +1,40 @@
+import {RootState} from "@/core/store/root.state";
 import {ActionContext, ActionTree} from "vuex";
 import {ReportDataState} from "./cbc.state";
-import {ReportData, ReportDataImportRequest} from "../models";
+import {ReportDataAddRequest, ReportDataCreateRequest, ReportDataParseRequest, ReportDataUpdateRequest} from "../models";
 import cbcService from "../services/cbc.service";
 
-export const actions: ActionTree<ReportDataState, any> = {
-	list: async ({
-		             commit,
-		             dispatch,
-		             state
-	             }: ActionContext<ReportDataState, any>) => {},
+export const actions: ActionTree<ReportDataState, RootState> = {
+	list: async (action: ActionContext<ReportDataState, any>) => {},
 	get: async (
-		{commit, dispatch, state}: ActionContext<ReportDataState, any>,
+		action: ActionContext<ReportDataState, RootState>,
 		id: string | number
 	) => {
-		commit("GET_REPORT_DATA", id);
+		action.commit("GET_REPORT_DATA", id);
+	},
+	add: async (action: ActionContext<ReportDataState, any>,
+	            request: ReportDataAddRequest) => {
+		action.commit("ADD_REPORT_DATA", request.data);
 	},
 	create: async (
-		{commit, dispatch, state}: ActionContext<ReportDataState, any>,
-		request: ReportData
+		action: ActionContext<ReportDataState, RootState>,
+		request: ReportDataCreateRequest
 	) => {
-		commit("CREATE_REPORT_DATA", request);
+		action.commit("CREATE_REPORT_DATA", request.data);
 	},
 	update: async (
-		{commit, dispatch, state}: ActionContext<ReportDataState, any>,
-		request: ReportData
+		action: ActionContext<ReportDataState, RootState>,
+		request: ReportDataUpdateRequest
 	) => {
-		commit("UPDATE_REPORT_DATA", request);
+		action.commit("UPDATE_REPORT_DATA", request.data);
 	},
-	import: async (
-		action: ActionContext<ReportDataState, any>,
-		request: ReportDataImportRequest
+	parse: async (
+		action: ActionContext<ReportDataState, RootState>,
+		request: ReportDataParseRequest
 	) => {
-		cbcService.xmlToModel(request).then(response => {
-			console.log(response.data);
+		cbcService.parse(request).then(response => {
+			const request = {data: response.data} as ReportDataAddRequest;
+			action.dispatch("add", request);
 		});
 	}
 };

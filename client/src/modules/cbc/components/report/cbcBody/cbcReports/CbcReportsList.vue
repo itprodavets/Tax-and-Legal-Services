@@ -26,9 +26,9 @@
 	})
 	export default class CbcReportsListComponent extends Vue {
 		@Prop()
-		public countries!: Country[];
+		public readonly countries!: Country[];
 		@Prop()
-		public readonly!: boolean;
+		public readonly readonly!: boolean;
 
 		public data() {
 			return {

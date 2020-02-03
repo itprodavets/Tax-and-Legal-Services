@@ -47,7 +47,7 @@
 	})
 	export default class CorrectableCbCReportComponent extends Vue {
 		@Prop()
-		public countries!: Country[];
+		public readonly countries!: Country[];
 
 		public data() {
 			return {

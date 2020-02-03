@@ -12,6 +12,7 @@
             <v-card-text class="mt-8">
                 <v-file-input
                         v-model="files"
+                        accept="text/xml"
                         placeholder="Load your xml documents"
                         label="File input"
                         multiple
@@ -31,9 +32,9 @@
             </v-card-text>
 
             <v-card-actions class="justify-center">
-                <v-btn :disabled="files.length === 0" class="ma-2" color="success" outlined tile @click="onImport()">
-                    <v-icon left>mdi-plus-circle</v-icon>
-                    Import
+                <v-btn :disabled="files.length === 0" class="ma-2" color="success" outlined tile @click="onParse()">
+                    <v-icon left>mdi-file-import</v-icon>
+                    Parse
                 </v-btn>
                 <v-btn class="ma-2" color="warning" outlined tile @click="dialog = false">
                     <v-icon left>mdi-cancel</v-icon>
@@ -56,9 +57,9 @@
 			}
 		}
 
-		public onImport() {
+		public onParse() {
 			const files = (this.$data.files as File[]);
-			files.forEach(file => this.$emit("import-file", file));
+			files.forEach(file => this.$emit("parse-file", file));
 			this.$data.dialog = false;
 		}
 	}

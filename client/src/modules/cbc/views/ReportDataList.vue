@@ -1,6 +1,6 @@
 import {SupportedSchema} from "@/modules/cbc/models";
 <template>
-    <v-container class="pa-0">
+    <v-container fluid class="pa-0">
         <v-toolbar class="cbc-data-table-toolbar elevation-1" dense>
             <template>
                 <v-btn @click="onCreate()" dense icon>
@@ -10,17 +10,17 @@ import {SupportedSchema} from "@/modules/cbc/models";
             <v-toolbar-title>CbC Reporting</v-toolbar-title>
             <v-spacer></v-spacer>
             <template>
-                <ReportDataImportComponent @import-file="onImport" />
+                <ReportDataImportComponent @parse-file="onParse"/>
             </template>
         </v-toolbar>
-        <ReportDataListComponent :reportData="this.$store.state.cbc.entities" />
+        <ReportDataListComponent :reportData="this.$store.state.cbc.entities"/>
     </v-container>
 </template>
 <script lang="ts">
 	import {Component, Vue} from "vue-property-decorator";
 	import ReportDataListComponent from "@/modules/cbc/components/list/ReportDataList.vue";
 	import ReportDataImportComponent from "@/modules/cbc/components/import/ReportDataImport.vue";
-	import {ReportCreateRequest, ReportData, ReportDataImportRequest, SupportedSchema} from "../models";
+	import {ReportCreateRequest, ReportData, ReportDataParseRequest, SupportedSchema} from "../models";
 	import {Guid} from "@/core/common/guid";
 
 	@Component({
@@ -57,12 +57,12 @@ import {SupportedSchema} from "@/modules/cbc/models";
 			});
 		}
 
-		public onImport(file: File) {
+		public onParse(file: File) {
 			const request = {
-				schema: SupportedSchema.OECD_200,
+				schema: SupportedSchema[SupportedSchema.OECD_200],
 				file: file
-			} as ReportDataImportRequest;
-			this.$store.dispatch("cbc/import", request).then(() => {});
+			} as ReportDataParseRequest;
+			this.$store.dispatch("cbc/parse", request).then(() => {});
 		}
 	}
 </script>

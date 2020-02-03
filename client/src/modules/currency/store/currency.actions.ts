@@ -3,7 +3,7 @@ import {AxiosResponse} from "axios";
 import {CurrencyState} from "./currency.state";
 import {Currency} from "../models/dto.model";
 import currencyService from "../services/currency.service";
-import {RootState} from "@/store/root.state";
+import {RootState} from "@/core/store/root.state";
 
 export const actions: ActionTree<CurrencyState, RootState> = {
   list: async ({

@@ -7,6 +7,7 @@
             class="elevation-0"
             @click:row="onClickRow"
     >
+        <template v-slot:item.organisation.name="{ item }">{{ item.organisation.name.join(", ") }}</template>
         <template v-slot:item.role="{ item }">{{ onGetNameUltimateParentEntityRole(item.role) }}</template>
     </v-data-table>
 </template>

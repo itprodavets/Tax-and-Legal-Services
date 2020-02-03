@@ -1,5 +1,5 @@
 <template>
-    <v-container class="pa-0">
+    <v-container fluid>
         <DocSpecComponent v-model="$v.reportBody.doc.$model" :readonly="readonly"/>
         <v-row>
             <v-col cols="12" lg="3" md="3" class="pa-0 px-3">
@@ -19,7 +19,8 @@
     </v-container>
 </template>
 <script lang="ts">
-	import {Component, Mixins, Prop, Watch} from "vue-property-decorator";
+	import {CountryEnumMixin} from "@/modules/country/mixins/country-enum";
+    import {Component, Mixins, Prop, Watch} from "vue-property-decorator";
 	import DocSpecComponent from "@/modules/cbc/components/form/сbcBody/docSpec/DocSpec.vue";
 	import SummaryComponent from "@/modules/cbc/components/form/сbcBody/report-body/Summary.vue";
 
@@ -27,7 +28,7 @@
 	import {validationMixin} from "vuelidate";
 	import {Country} from "@/modules/country/models/dto.model";
 	import {Currency} from '@/modules/currency/models/dto.model';
-	import {CountryEnum, Doc, ReportBody, Summary} from "@/modules/cbc/models";
+	import {Doc, ReportBody, Summary} from "@/modules/cbc/models";
 
 	@Component({
 		components: {
@@ -43,15 +44,15 @@
 			}
 		}
 	})
-	export default class ReportBodyComponent extends Mixins(CbcMixin) {
+	export default class ReportBodyComponent extends Mixins(CbcMixin, CountryEnumMixin) {
 		@Prop()
-		public countries!: Country[];
+		public readonly countries!: Country[];
 
 		@Prop()
 		public currencies!: Currency[];
 
 		@Prop()
-		public readonly!: boolean;
+		public readonly readonly!: boolean;
 
 		@Watch("reportBody")
 		onReportChanged(value: ReportBody, oldValue: ReportBody) {
@@ -65,7 +66,7 @@
 			} else {
 				const data = {
 					doc: this.$data.reportBody.doc,
-					jurisdiction: this.onGetCountryEnum(this.$data.reportBody.jurisdiction),
+					jurisdiction: this.getCountryEnum(this.$data.reportBody.jurisdiction),
 					summary: this.$data.reportBody.summary
 				} as ReportBody;
 				this.$emit("input", data);
@@ -76,9 +77,9 @@
 			return {
 				reportBody: {
 					doc: {} as Doc,
-					jurisdiction: {} as CountryEnum,
+					jurisdiction: {},
 					summary: {} as Summary
-				} as ReportBody
+				}
 			};
 		}
 	}
