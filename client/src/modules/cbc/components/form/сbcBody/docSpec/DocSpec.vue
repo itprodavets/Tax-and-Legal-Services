@@ -61,6 +61,7 @@
 	import {ReferenceBook} from "@/core/models";
 	import {CbcMixin} from "@/modules/cbc/mixins";
 	import {Doc, DocTypeEnum} from "@/modules/cbc/models";
+	import _ from "lodash";
 	import {Component, Mixins, Prop, PropSync} from "vue-property-decorator";
 	import {validationMixin} from "vuelidate";
 	import {maxLength, required} from "vuelidate/lib/validators";
@@ -103,7 +104,7 @@
 		public value!: Doc;
 
 		public get type(): ReferenceBook<DocTypeEnum> | undefined {
-			if (this.value && this.value.type)
+			if (this.value && !_.isUndefined(this.value.type))
 				return this.docTypes.find(x => x.id === this.value.type)!;
 		}
 

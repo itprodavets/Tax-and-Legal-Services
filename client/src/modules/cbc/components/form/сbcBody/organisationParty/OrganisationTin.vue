@@ -41,6 +41,7 @@
 	import {CountryEnum} from "@/modules/country/models";
 
 	import {Country} from "@/modules/country/models/dto.model";
+	import _ from "lodash";
 	import {Component, Mixins, Prop, PropSync} from "vue-property-decorator";
 	import {validationMixin} from "vuelidate";
 	import {maxLength, required} from "vuelidate/lib/validators";
@@ -79,7 +80,7 @@
 		public value!: Tin;
 
 		public get jurisdiction(): Country | undefined {
-			if (this.value && this.value.jurisdiction)
+			if (this.value && !_.isUndefined(this.value.jurisdiction))
 				return this.countries.find(x => x.alpha2Code === CountryEnum[this.value.jurisdiction])!;
 		}
 

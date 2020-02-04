@@ -84,6 +84,7 @@
 	import {CbcMixin} from "@/modules/cbc/mixins";
 	import {ReportingEntity, ReportingRoleEnum} from "@/modules/cbc/models";
 	import {Country} from "@/modules/country/models/dto.model";
+	import _ from "lodash";
 	import moment from "moment";
 	import {Component, Mixins, Prop, PropSync} from "vue-property-decorator";
 	import {validationMixin} from "vuelidate";
@@ -130,7 +131,7 @@
 		public endDateMenu: boolean = false;
 
 		public get role(): ReferenceBook<ReportingRoleEnum> | undefined {
-			if (this.value && this.value.role)
+			if (this.value && !_.isUndefined(this.value.role))
 				return this.reportingRoles.find(x => x.id === this.value.role);
 		}
 

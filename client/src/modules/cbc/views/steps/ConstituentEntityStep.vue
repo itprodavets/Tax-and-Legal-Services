@@ -24,7 +24,7 @@
         </div>
         <v-navigation-drawer v-model="drawer" permanent class="constituent-entity">
             <v-form class="pa-4" v-if="!drawer">
-                <ConstituentEntityComponent v-model="constituentEntity" :readonly="false"
+                <ConstituentEntityComponent :constituentEntity.sync="constituentEntity" :readonly="false"
                                             :countries="this.$store.state.country.entities"/>
                 <v-btn class="ma-2" tile outlined color="success"
                        @click="onCreate()">
