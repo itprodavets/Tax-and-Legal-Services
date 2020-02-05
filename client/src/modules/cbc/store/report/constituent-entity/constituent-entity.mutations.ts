@@ -1,6 +1,7 @@
+import {ConstituentEntity} from "@/modules/cbc/models";
+import _ from "lodash";
 import {MutationTree} from "vuex";
 import {ConstituentEntityState} from "./constituent-entity.state";
-import {ConstituentEntity} from "@/modules/cbc/models";
 
 export const mutations: MutationTree<ConstituentEntityState> = {
 	GET_CONSTITUENT_ENTITY_LIST: (
@@ -14,5 +15,13 @@ export const mutations: MutationTree<ConstituentEntityState> = {
 	CREATE_CONSTITUENT_ENTITY: (
 		state: ConstituentEntityState,
 		constituentEntity: ConstituentEntity
-	) => state.entities.push(constituentEntity)
+	) => state.entities.push(constituentEntity),
+	UPDATE_CONSTITUENT_ENTITY: (
+		state: ConstituentEntityState,
+		constituentEntity: ConstituentEntity
+	) => {
+		const index = _.findIndex(state.entities, x => x.id === constituentEntity.id);
+		if (index && index !== -1)
+			state.entities[index] = constituentEntity;
+	}
 };

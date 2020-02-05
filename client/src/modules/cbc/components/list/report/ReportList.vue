@@ -1,27 +1,27 @@
 <template>
-    <v-data-table
-            dense
-            :headers="headers"
-            :items="items"
-            :items-per-page="5"
-            class="elevation-1"
-            @click:row="onClickRow"
-    >
-        <template v-slot:item.reportingEntity.organisation.name="{ item }">
-            {{item.reportingEntity.organisation.name.join(", ")}}
-        </template>
-        <template v-slot:item.reportingEntity.role="{ item }">
-            {{ onGetNameReportingRoleEnum(item.reportingEntity.role)}}
-        </template>
-        <template v-slot:item.reportingEntity.startDate="{ item }">{{ onGetDate(item.reportingEntity.startDate) }}
-        </template>
-        <template v-slot:item.reportingEntity.endDate="{ item }">{{ onGetDate(item.reportingEntity.endDate) }}
-        </template>
-    </v-data-table>
+	<v-data-table
+			dense
+			:headers="headers"
+			:items="reports"
+			:items-per-page="5"
+			class="elevation-1"
+			@click:row="onClickRow"
+	>
+		<template v-slot:item.reportingEntity.organisation.name="{ item }">
+			{{item.reportingEntity.organisation.name.join(", ")}}
+		</template>
+		<template v-slot:item.reportingEntity.role="{ item }">
+			{{ onGetNameReportingRoleEnum(item.reportingEntity.role)}}
+		</template>
+		<template v-slot:item.reportingEntity.startDate="{ item }">{{ onGetDate(item.reportingEntity.startDate) }}
+		</template>
+		<template v-slot:item.reportingEntity.endDate="{ item }">{{ onGetDate(item.reportingEntity.endDate) }}
+		</template>
+	</v-data-table>
 </template>
 <script lang="ts">
 	import {CbcMixin} from "@/modules/cbc/mixins";
-	import {Report} from "@/modules/cbc/models";
+	import {Report, ReportingRoleEnum} from "@/modules/cbc/models";
 	import moment from "moment";
 	import {Component, Mixins, Prop} from "vue-property-decorator";
 
@@ -30,40 +30,34 @@
 	})
 	export default class ReportListComponent extends Mixins(CbcMixin) {
 		@Prop()
-		reports!: Report[];
+		public readonly reports!: Report[];
 
-		public data() {
-			return {
-				headers: [
-					{
-						text: "Organisation",
-						value: "reportingEntity.organisation.name"
-					},
-					{
-						text: "Tin",
-						value: "reportingEntity.organisation.tin.tin"
-					},
-					{
-						text: "Name MNE Group",
-						value: "reportingEntity.nameMNEGroup"
-					},
-					{
-						text: "Role",
-						value: "reportingEntity.role"
-					},
-					{
-						text: "Start Date",
-						value: "reportingEntity.startDate"
-					},
-					{
-						text: "End Date",
-						value: "reportingEntity.endDate"
-					},
-
-				],
-				items: this.reports
-			};
-		}
+		public headers: any[] = [
+			{
+				text: "Organisation",
+				value: "reportingEntity.organisation.name"
+			},
+			{
+				text: "Tin",
+				value: "reportingEntity.organisation.tin.tin"
+			},
+			{
+				text: "Name MNE Group",
+				value: "reportingEntity.nameMNEGroup"
+			},
+			{
+				text: "Role",
+				value: "reportingEntity.role"
+			},
+			{
+				text: "Start Date",
+				value: "reportingEntity.startDate"
+			},
+			{
+				text: "End Date",
+				value: "reportingEntity.endDate"
+			}
+		];
 
 		public onClickRow(row: Report) {
 			this.$router.push({
@@ -75,12 +69,16 @@
 		public onGetDate(date: Date) {
 			return moment(date).format('L');
 		}
+
+		public onGetNameReportingRoleEnum(reportingRoleEnum: ReportingRoleEnum): string | undefined {
+			return this.reportingRoles.find(x => x.id === reportingRoleEnum)!.name!;
+		}
 	}
 </script>
 <style lang="scss">
-    table {
-        tr {
-            cursor: pointer;
-        }
-    }
+	table {
+		tr {
+			cursor: pointer;
+		}
+	}
 </style>

@@ -7,8 +7,7 @@
                             :key="step.id"
                             :complete="stepper > step.id"
                             :step="step.id"
-                            @click="onGoToRoute(step.route)"
-                            editable
+
                     >{{step.name}}
                     </v-stepper-step>
                     <v-divider v-if="step !== steppers[steppers.length - 1]" :key="step.route"></v-divider>

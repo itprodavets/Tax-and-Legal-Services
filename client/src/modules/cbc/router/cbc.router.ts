@@ -6,10 +6,10 @@ import ReportView from "@/modules/cbc/views/report/Report.vue";
 import ReportDetailView from "@/modules/cbc/views/report/ReportDetail.vue";
 import ReportListView from "@/modules/cbc/views/report/ReportList.vue";
 
-import ConstituentEntityStepView from "@/modules/cbc/views/steps/ConstituentEntityStep.vue";
+import ConstituentEntityStepView from "@/modules/cbc/views/steps/constituent-entity/ConstituentEntityStep.vue";
 import ReportingEntityStepView from "@/modules/cbc/views/steps/ReportingEntityStep.vue";
-import AdditionalInformationStepView from "@/modules/cbc/views/steps/AdditionalInformationStep.vue";
-import ReportBodyStepView from "@/modules/cbc/views/steps/ReportBodyStep.vue";
+import AdditionalInformationStepView from "@/modules/cbc/views/steps/additional-info/AdditionalInformationStep.vue";
+import ReportBodyStepView from "@/modules/cbc/views/steps/report-body/ReportBodyStep.vue";
 
 import ReportDataMessageView from "@/modules/cbc/views/ReportDataMessage.vue";
 

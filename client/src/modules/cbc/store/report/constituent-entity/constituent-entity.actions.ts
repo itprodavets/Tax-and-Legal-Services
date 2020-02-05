@@ -1,7 +1,7 @@
 import {ActionContext, ActionTree} from "vuex";
 import {ConstituentEntityState} from "./constituent-entity.state";
 import {ReportState} from "../report.state";
-import {ConstituentEntityCreateRequest, ConstituentEntityRequest, Report, ReportData} from "@/modules/cbc/models";
+import {ConstituentEntityCreateRequest, ConstituentEntityRequest, ConstituentEntityUpdateRequest, Report, ReportData} from "@/modules/cbc/models";
 import _ from "lodash";
 import {Guid} from "@/core/common/guid";
 
@@ -33,5 +33,11 @@ export const actions: ActionTree<ConstituentEntityState, ReportState> = {
 	) => {
 		request.constituentEntity.id = Guid.create().toString();
 		action.commit("CREATE_CONSTITUENT_ENTITY", request.constituentEntity);
+	},
+	update: async (
+		action: ActionContext<ConstituentEntityState, ReportState>,
+		request: ConstituentEntityUpdateRequest
+	) => {
+		action.commit("UPDATE_CONSTITUENT_ENTITY", request.constituentEntity);
 	}
 };

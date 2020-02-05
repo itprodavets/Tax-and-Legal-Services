@@ -2,29 +2,26 @@ import {CountryEnum} from "@/modules/country/models";
 import {Country} from "@/modules/country/models/dto.model";
 import {Component, Vue} from "vue-property-decorator";
 
-@Component
-export class CountryMixin extends Vue {
-    public created() {
+@Component({
+    mounted() {
         this.$store.dispatch("country/list");
     }
-    
+})
+export class CountryMixin extends Vue {
     public get countries(): Array<Country> {
         return this.$store.state.country.entities as Array<Country>;
     }
     
-    public getCountriesByCodes(data: CountryEnum | Array<CountryEnum>): Country | Array<Country> {
-        if (Array.isArray(data)) {
-            const _countries = this.countries.filter(country => data.find(code => CountryEnum[code] === country.alpha2Code));
-            if (_countries && _countries.length > 0) return _countries;
-            throw Error("codes not found");
-        } else return this.getCountryByCode(data);
+    public getCountriesByCodes(countryEnums: Array<CountryEnum>): Array<Country> {
+        const countries = countryEnums.map(x => this.getCountryByCode(x));
+        if (countries && countries.length > 0) return countries;
+        else throw Error("codes not found");
     }
     
-    private getCountryByCode(code: CountryEnum): Country {
-        const _country = this.countries.find(country => CountryEnum[code] === country.alpha2Code);
-        if (_country) return _country;
-        
-        throw Error("code not found");
+    public getCountryByCode(countryEnum: CountryEnum): Country {
+        const country = this.countries.find(country => CountryEnum[countryEnum] === country.alpha2Code);
+        if (country) return country;
+        else throw Error("code not found");
     }
     
     public getNamesByCountries(data: Country | Array<Country>): string {

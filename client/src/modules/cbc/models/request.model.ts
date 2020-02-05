@@ -41,6 +41,11 @@ export interface ConstituentEntityCreateRequest extends TRequest {
 	constituentEntity: ConstituentEntity;
 }
 
+export interface ConstituentEntityUpdateRequest extends TRequest {
+	reportId: string | number;
+	constituentEntity: ConstituentEntity;
+}
+
 export interface ReportingEntityRequest {
 	reportId: string | number;
 }

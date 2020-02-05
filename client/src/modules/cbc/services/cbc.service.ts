@@ -10,14 +10,10 @@ class CbcService extends ApiCrudService<number, any, any> {
 	}
 	
 	public parse(request: ReportDataParseRequest): Promise<AxiosResponse<ReportData>> {
-		const params = new URLSearchParams();
-		params.append("schema", request.schema);
-		
 		const data = new FormData();
 		data.append("file", request.file);
 		
 		return this.instance.post<ReportData>(`reports/parse`, data, {
-			params: params,
 			headers: {
 				'Content-Type': 'multipart/form-data'
 			}

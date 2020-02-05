@@ -1,271 +1,272 @@
 <template>
-    <v-row>
-        <v-col cols="12" lg="3" md="3">
-            <v-text-field
-                    dense
-                    filled
-                    v-model="$v.summary.unrelated.value.$model"
-                    type="number"
-                    step
-                    label="Unrelated"
-                    :disabled="readonly"
-                    :error-messages="unrelatedErrors"
-                    required
-                    @input="$v.summary.unrelated.value.$touch()"
-                    @blur="$v.summary.unrelated.value.$touch()"
-            ></v-text-field>
-            <v-autocomplete
-                    dense
-                    filled
-                    v-model="$v.summary.unrelated.currency.$model"
-                    :items="currencies"
-                    label="Currency"
-                    :disabled="readonly"
-                    :error-messages="unrelatedCurrencyErrors"
-                    required
-                    @input="$v.summary.unrelated.currency.$touch()"
-                    @blur="$v.summary.unrelated.currency.$touch()"
-            ></v-autocomplete>
-        </v-col>
-        <v-col cols="12" lg="3" md="3">
-            <v-text-field
-                    dense
-                    filled
-                    v-model="$v.summary.related.value.$model"
-                    type="number"
-                    step
-                    label="Related"
-                    :disabled="readonly"
-                    :error-messages="relatedErrors"
-                    required
-                    @input="$v.summary.related.value.$touch()"
-                    @blur="$v.summary.related.value.$touch()"
-            ></v-text-field>
-            <v-autocomplete
-                    dense
-                    filled
-                    v-model="$v.summary.related.currency.$model"
-                    :items="currencies"
-                    label="Currency"
-                    :disabled="readonly"
-                    :error-messages="relatedCurrencyErrors"
-                    required
-                    @input="$v.summary.related.currency.$touch()"
-                    @blur="$v.summary.related.currency.$touch()"
-            ></v-autocomplete>
-        </v-col>
-        <v-col cols="12" lg="3" md="3">
-            <v-text-field
-                    dense
-                    filled
-                    v-model="$v.summary.total.value.$model"
-                    type="number"
-                    step
-                    label="Total"
-                    :disabled="readonly"
-                    :error-messages="totalErrors"
-                    required
-                    @input="$v.summary.total.value.$touch()"
-                    @blur="$v.summary.total.value.$touch()"
-            ></v-text-field>
-            <v-autocomplete
-                    dense
-                    filled
-                    v-model="$v.summary.total.currency.$model"
-                    :items="currencies"
-                    label="Currency"
-                    :disabled="readonly"
-                    :error-messages="totalCurrencyErrors"
-                    required
-                    @input="$v.summary.total.currency.$touch()"
-                    @blur="$v.summary.total.currency.$touch()"
-            ></v-autocomplete>
-        </v-col>
-        <v-col cols="12" lg="3" md="3">
-            <v-text-field
-                    dense
-                    filled
-                    v-model="$v.summary.profitOrLoss.value.$model"
-                    type="number"
-                    step
-                    label="Profit Or Loss"
-                    :disabled="readonly"
-                    :error-messages="profitOrLossErrors"
-                    required
-                    @input="$v.summary.profitOrLoss.value.$touch()"
-                    @blur="$v.summary.profitOrLoss.value.$touch()"
-            ></v-text-field>
-            <v-autocomplete
-                    dense
-                    filled
-                    v-model="$v.summary.profitOrLoss.currency.$model"
-                    :items="currencies"
-                    label="Currency"
-                    :disabled="readonly"
-                    :error-messages="profitOrLossCurrencyErrors"
-                    required
-                    @input="$v.summary.profitOrLoss.currency.$touch()"
-                    @blur="$v.summary.profitOrLoss.currency.$touch()"
-            ></v-autocomplete>
-        </v-col>
-        <v-col cols="12" lg="3" md="3">
-            <v-text-field
-                    dense
-                    filled
-                    v-model="$v.summary.taxPaid.value.$model"
-                    type="number"
-                    step
-                    label="Tax Paid"
-                    :disabled="readonly"
-                    :error-messages="taxPaidErrors"
-                    required
-                    @input="$v.summary.taxPaid.value.$touch()"
-                    @blur="$v.summary.taxPaid.value.$touch()"
-            ></v-text-field>
-            <v-autocomplete
-                    dense
-                    filled
-                    v-model="$v.summary.taxPaid.currency.$model"
-                    :items="currencies"
-                    label="Currency"
-                    :disabled="readonly"
-                    :error-messages="taxPaidCurrencyErrors"
-                    required
-                    @input="$v.summary.taxPaid.currency.$touch()"
-                    @blur="$v.summary.taxPaid.currency.$touch()"
-            ></v-autocomplete>
-        </v-col>
-        <v-col cols="12" lg="3" md="3">
-            <v-text-field
-                    dense
-                    filled
-                    v-model="$v.summary.taxAccrued.value.$model"
-                    type="number"
-                    step
-                    label="Tax Accrued"
-                    :disabled="readonly"
-                    :error-messages="taxAccruedErrors"
-                    required
-                    @input="$v.summary.taxAccrued.value.$touch()"
-                    @blur="$v.summary.taxAccrued.value.$touch()"
-            ></v-text-field>
-            <v-autocomplete
-                    dense
-                    filled
-                    v-model="$v.summary.taxAccrued.currency.$model"
-                    :items="currencies"
-                    label="Currency"
-                    :disabled="readonly"
-                    :error-messages="taxAccruedCurrencyErrors"
-                    required
-                    @input="$v.summary.taxAccrued.currency.$touch()"
-                    @blur="$v.summary.taxAccrued.currency.$touch()"
-            ></v-autocomplete>
-        </v-col>
-        <v-col cols="12" lg="3" md="3">
-            <v-text-field
-                    dense
-                    filled
-                    v-model="$v.summary.capital.value.$model"
-                    type="number"
-                    step
-                    label="Capital"
-                    :disabled="readonly"
-                    :error-messages="capitalErrors"
-                    required
-                    @input="$v.summary.capital.value.$touch()"
-                    @blur="$v.summary.capital.value.$touch()"
-            ></v-text-field>
-            <v-autocomplete
-                    dense
-                    filled
-                    v-model="$v.summary.capital.currency.$model"
-                    :items="currencies"
-                    label="Currency"
-                    :disabled="readonly"
-                    :error-messages="capitalCurrencyErrors"
-                    required
-                    @input="$v.summary.capital.currency.$touch()"
-                    @blur="$v.summary.capital.currency.$touch()"
-            ></v-autocomplete>
-        </v-col>
-        <v-col cols="12" lg="3" md="3">
-            <v-text-field
-                    dense
-                    filled
-                    v-model="$v.summary.earnings.value.$model"
-                    type="number"
-                    step
-                    label="Earnings"
-                    :disabled="readonly"
-                    :error-messages="earningsErrors"
-                    required
-                    @input="$v.summary.earnings.value.$touch()"
-                    @blur="$v.summary.earnings.value.$touch()"
-            ></v-text-field>
-            <v-autocomplete
-                    dense
-                    filled
-                    v-model="$v.summary.earnings.currency.$model"
-                    :items="currencies"
-                    label="Currency"
-                    :disabled="readonly"
-                    :error-messages="earningsCurrencyErrors"
-                    required
-                    @input="$v.summary.earnings.currency.$touch()"
-                    @blur="$v.summary.earnings.currency.$touch()"
-            ></v-autocomplete>
-        </v-col>
-        <v-col cols="12" lg="3" md="3">
-            <v-text-field
-                    dense
-                    filled
-                    v-model="$v.summary.nbEmployees.$model"
-                    type="string"
-                    label="Nb Employees"
-                    :disabled="readonly"
-                    :error-messages="nbEmployeesErrors"
-                    required
-                    @input="$v.summary.nbEmployees.$touch()"
-                    @blur="$v.summary.nbEmployees.$touch()"
-            ></v-text-field>
-        </v-col>
-        <v-col cols="12" lg="3" md="3">
-            <v-text-field
-                    dense
-                    filled
-                    v-model="$v.summary.assets.value.$model"
-                    type="number"
-                    step
-                    label="Assets"
-                    :disabled="readonly"
-                    :error-messages="assetsErrors"
-                    required
-                    @input="$v.summary.assets.value.$touch()"
-                    @blur="$v.summary.assets.value.$touch()"
-            ></v-text-field>
-            <v-autocomplete
-                    dense
-                    filled
-                    v-model="$v.summary.assets.currency.$model"
-                    :items="currencies"
-                    label="Currency"
-                    :disabled="readonly"
-                    :error-messages="assetsCurrencyErrors"
-                    required
-                    @input="$v.summary.assets.currency.$touch()"
-                    @blur="$v.summary.assets.currency.$touch()"
-            ></v-autocomplete>
-        </v-col>
-    </v-row>
+	<v-row>
+		<v-col cols="12" lg="3" md="3">
+			<v-text-field
+					dense
+					filled
+					v-model="$v.summary.unrelated.value.$model"
+					type="number"
+					step
+					label="Unrelated"
+					:disabled="readonly"
+					:error-messages="unrelatedErrors"
+					required
+					@input="$v.summary.unrelated.value.$touch()"
+					@blur="$v.summary.unrelated.value.$touch()"
+			></v-text-field>
+			<v-autocomplete
+					dense
+					filled
+					v-model="$v.summary.unrelated.currency.$model"
+					:items="currencies"
+					label="Currency"
+					:disabled="readonly"
+					:error-messages="unrelatedCurrencyErrors"
+					required
+					@input="$v.summary.unrelated.currency.$touch()"
+					@blur="$v.summary.unrelated.currency.$touch()"
+			></v-autocomplete>
+		</v-col>
+		<v-col cols="12" lg="3" md="3">
+			<v-text-field
+					dense
+					filled
+					v-model="$v.summary.related.value.$model"
+					type="number"
+					step
+					label="Related"
+					:disabled="readonly"
+					:error-messages="relatedErrors"
+					required
+					@input="$v.summary.related.value.$touch()"
+					@blur="$v.summary.related.value.$touch()"
+			></v-text-field>
+			<v-autocomplete
+					dense
+					filled
+					v-model="$v.summary.related.currency.$model"
+					:items="currencies"
+					label="Currency"
+					:disabled="readonly"
+					:error-messages="relatedCurrencyErrors"
+					required
+					@input="$v.summary.related.currency.$touch()"
+					@blur="$v.summary.related.currency.$touch()"
+			></v-autocomplete>
+		</v-col>
+		<v-col cols="12" lg="3" md="3">
+			<v-text-field
+					dense
+					filled
+					v-model="$v.summary.total.value.$model"
+					type="number"
+					step
+					label="Total"
+					:disabled="readonly"
+					:error-messages="totalErrors"
+					required
+					@input="$v.summary.total.value.$touch()"
+					@blur="$v.summary.total.value.$touch()"
+			></v-text-field>
+			<v-autocomplete
+					dense
+					filled
+					v-model="$v.summary.total.currency.$model"
+					:items="currencies"
+					label="Currency"
+					:disabled="readonly"
+					:error-messages="totalCurrencyErrors"
+					required
+					@input="$v.summary.total.currency.$touch()"
+					@blur="$v.summary.total.currency.$touch()"
+			></v-autocomplete>
+		</v-col>
+		<v-col cols="12" lg="3" md="3">
+			<v-text-field
+					dense
+					filled
+					v-model="$v.summary.profitOrLoss.value.$model"
+					type="number"
+					step
+					label="Profit Or Loss"
+					:disabled="readonly"
+					:error-messages="profitOrLossErrors"
+					required
+					@input="$v.summary.profitOrLoss.value.$touch()"
+					@blur="$v.summary.profitOrLoss.value.$touch()"
+			></v-text-field>
+			<v-autocomplete
+					dense
+					filled
+					v-model="$v.summary.profitOrLoss.currency.$model"
+					:items="currencies"
+					label="Currency"
+					:disabled="readonly"
+					:error-messages="profitOrLossCurrencyErrors"
+					required
+					@input="$v.summary.profitOrLoss.currency.$touch()"
+					@blur="$v.summary.profitOrLoss.currency.$touch()"
+			></v-autocomplete>
+		</v-col>
+		<v-col cols="12" lg="3" md="3">
+			<v-text-field
+					dense
+					filled
+					v-model="$v.summary.taxPaid.value.$model"
+					type="number"
+					step
+					label="Tax Paid"
+					:disabled="readonly"
+					:error-messages="taxPaidErrors"
+					required
+					@input="$v.summary.taxPaid.value.$touch()"
+					@blur="$v.summary.taxPaid.value.$touch()"
+			></v-text-field>
+			<v-autocomplete
+					dense
+					filled
+					v-model="$v.summary.taxPaid.currency.$model"
+					:items="currencies"
+					label="Currency"
+					:disabled="readonly"
+					:error-messages="taxPaidCurrencyErrors"
+					required
+					@input="$v.summary.taxPaid.currency.$touch()"
+					@blur="$v.summary.taxPaid.currency.$touch()"
+			></v-autocomplete>
+		</v-col>
+		<v-col cols="12" lg="3" md="3">
+			<v-text-field
+					dense
+					filled
+					v-model="$v.summary.taxAccrued.value.$model"
+					type="number"
+					step
+					label="Tax Accrued"
+					:disabled="readonly"
+					:error-messages="taxAccruedErrors"
+					required
+					@input="$v.summary.taxAccrued.value.$touch()"
+					@blur="$v.summary.taxAccrued.value.$touch()"
+			></v-text-field>
+			<v-autocomplete
+					dense
+					filled
+					v-model="$v.summary.taxAccrued.currency.$model"
+					:items="currencies"
+					label="Currency"
+					:disabled="readonly"
+					:error-messages="taxAccruedCurrencyErrors"
+					required
+					@input="$v.summary.taxAccrued.currency.$touch()"
+					@blur="$v.summary.taxAccrued.currency.$touch()"
+			></v-autocomplete>
+		</v-col>
+		<v-col cols="12" lg="3" md="3">
+			<v-text-field
+					dense
+					filled
+					v-model="$v.summary.capital.value.$model"
+					type="number"
+					step
+					label="Capital"
+					:disabled="readonly"
+					:error-messages="capitalErrors"
+					required
+					@input="$v.summary.capital.value.$touch()"
+					@blur="$v.summary.capital.value.$touch()"
+			></v-text-field>
+			<v-autocomplete
+					dense
+					filled
+					v-model="$v.summary.capital.currency.$model"
+					:items="currencies"
+					label="Currency"
+					:disabled="readonly"
+					:error-messages="capitalCurrencyErrors"
+					required
+					@input="$v.summary.capital.currency.$touch()"
+					@blur="$v.summary.capital.currency.$touch()"
+			></v-autocomplete>
+		</v-col>
+		<v-col cols="12" lg="3" md="3">
+			<v-text-field
+					dense
+					filled
+					v-model="$v.summary.earnings.value.$model"
+					type="number"
+					step
+					label="Earnings"
+					:disabled="readonly"
+					:error-messages="earningsErrors"
+					required
+					@input="$v.summary.earnings.value.$touch()"
+					@blur="$v.summary.earnings.value.$touch()"
+			></v-text-field>
+			<v-autocomplete
+					dense
+					filled
+					v-model="$v.summary.earnings.currency.$model"
+					:items="currencies"
+					label="Currency"
+					:disabled="readonly"
+					:error-messages="earningsCurrencyErrors"
+					required
+					@input="$v.summary.earnings.currency.$touch()"
+					@blur="$v.summary.earnings.currency.$touch()"
+			></v-autocomplete>
+		</v-col>
+		<v-col cols="12" lg="3" md="3">
+			<v-text-field
+					dense
+					filled
+					v-model="$v.summary.nbEmployees.$model"
+					type="string"
+					label="Nb Employees"
+					:disabled="readonly"
+					:error-messages="nbEmployeesErrors"
+					required
+					@input="$v.summary.nbEmployees.$touch()"
+					@blur="$v.summary.nbEmployees.$touch()"
+			></v-text-field>
+		</v-col>
+		<v-col cols="12" lg="3" md="3">
+			<v-text-field
+					dense
+					filled
+					v-model="$v.summary.assets.value.$model"
+					type="number"
+					step
+					label="Assets"
+					:disabled="readonly"
+					:error-messages="assetsErrors"
+					required
+					@input="$v.summary.assets.value.$touch()"
+					@blur="$v.summary.assets.value.$touch()"
+			></v-text-field>
+			<v-autocomplete
+					dense
+					filled
+					v-model="$v.summary.assets.currency.$model"
+					:items="currencies"
+					label="Currency"
+					:disabled="readonly"
+					:error-messages="assetsCurrencyErrors"
+					required
+					@input="$v.summary.assets.currency.$touch()"
+					@blur="$v.summary.assets.currency.$touch()"
+			></v-autocomplete>
+		</v-col>
+	</v-row>
 </template>
 <script lang="ts">
+	import {CbcMixin} from "@/modules/cbc/mixins";
+	import {MonAmnt, Summary} from "@/modules/cbc/models";
+	import {CurrencyEnum} from "@/modules/currency/models";
+	import {Currency} from "@/modules/currency/models/dto.model";
 	import {Component, Mixins, Prop, Watch} from "vue-property-decorator";
 	import {validationMixin} from "vuelidate";
 	import {required} from "vuelidate/lib/validators";
-	import {CurrencyEnum, MonAmnt, Summary} from "@/modules/cbc/models";
-	import {CbcMixin} from "@/modules/cbc/mixins";
-	import {Currency} from "@/modules/currency/models/dto.model";
 
 	@Component({
 		components: {},
@@ -375,48 +376,42 @@
 			} else {
 				const data = {
 					unrelated: {
-						currency: this.onGetCurrencyEnum(
-							this.$data.summary.unrelated.currency
-						),
+						currency: this.$data.summary.unrelated.currency,
 						value: this.$data.summary.unrelated.value
 					},
 					related: {
-						currency: this.onGetCurrencyEnum(this.$data.summary.related.currency),
+						currency: this.$data.summary.related.currency,
 						value: this.$data.summary.related.value
 					},
 					total: {
-						currency: this.onGetCurrencyEnum(this.$data.summary.total.currency),
+						currency: this.$data.summary.total.currency,
 						value: this.$data.summary.total.value
 					},
 					profitOrLoss: {
-						currency: this.onGetCurrencyEnum(
-							this.$data.summary.profitOrLoss.currency
-						),
+						currency: this.$data.summary.profitOrLoss.currency,
 						value: this.$data.summary.profitOrLoss.value
 					},
 					taxPaid: {
-						currency: this.onGetCurrencyEnum(this.$data.summary.taxPaid.currency),
+						currency: this.$data.summary.taxPaid.currency,
 						value: this.$data.summary.taxPaid.value
 					},
 					taxAccrued: {
-						currency: this.onGetCurrencyEnum(
-							this.$data.summary.taxAccrued.currency
-						),
+						currency:
+						this.$data.summary.taxAccrued.currency,
 						value: this.$data.summary.taxAccrued.value
 					},
 					capital: {
-						currency: this.onGetCurrencyEnum(this.$data.summary.capital.currency),
+						currency: this.$data.summary.capital.currency,
 						value: this.$data.summary.capital.value
 					},
 					earnings: {
-						currency: this.onGetCurrencyEnum(
-							this.$data.summary.earnings.currency
-						),
+						currency:
+						this.$data.summary.earnings.currency,
 						value: this.$data.summary.earnings.value
 					},
 					nbEmployees: this.$data.summary.nbEmployees,
 					assets: {
-						currency: this.onGetCurrencyEnum(this.$data.summary.assets.currency),
+						currency: this.$data.summary.assets.currency,
 						value: this.$data.summary.assets.value
 					}
 				} as Summary;

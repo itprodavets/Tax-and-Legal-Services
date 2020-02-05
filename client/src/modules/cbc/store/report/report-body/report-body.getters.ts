@@ -1,5 +1,7 @@
 import {GetterTree} from 'vuex';
-import {ReportBodyState} from './report-body.state';
 import {ReportState} from '../report.state';
+import {ReportBodyState} from './report-body.state';
 
-export const getters: GetterTree<ReportBodyState, ReportState> = {};
+export const getters: GetterTree<ReportBodyState, ReportState> = {
+	parts: (state: ReportBodyState) => state.entities
+};
