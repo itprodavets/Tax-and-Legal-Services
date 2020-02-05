@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Core.Domain.Enums.Countries;
 using Core.Domain.Enums.Currencies;
@@ -25,7 +26,7 @@ namespace TaxLegal.Cbc.Report.Application.Schemas.V200.Models.Xml
             {
                 SendingEntityIn = e.SendingEntityIN,
                 Jurisdiction = Parse<Alpha2Code>(e.TransmittingCountry),
-                Jurisdictions = e.ReceivingCountry.Select(x => Parse<Alpha2Code>(x)).ToArray(),
+                Jurisdictions = e.ReceivingCountry?.Select(x => Parse<Alpha2Code>(x)).ToArray() ?? Array.Empty<Alpha2Code>(),
                 Type = Parse<MessageTypeEnum>(e.MessageType),
                 Language = Parse<LanguageCode>(e.Language),
                 Warning = e.Warning,
@@ -43,9 +44,9 @@ namespace TaxLegal.Cbc.Report.Application.Schemas.V200.Models.Xml
             return new Dto.Report
             {
                 ReportingEntity = GetReportingEntity(e.ReportingEntity),
-                ConstituentEntities = e.CbcReports.SelectMany(x => x.ConstEntities).Select(GetConstituentEntity).ToArray(),
-                AdditionalInfo = e.AdditionalInfo.Select(GetAdditionalInfo).ToArray(),
-                Reposts = e.CbcReports.Select(GetReportBody).ToArray(),
+                ConstituentEntities = e.CbcReports?.SelectMany(x => x.ConstEntities).Select(GetConstituentEntity).ToArray() ?? Array.Empty<ConstituentEntity>(),
+                AdditionalInfo = e.AdditionalInfo?.Select(GetAdditionalInfo).ToArray() ?? Array.Empty<AdditionalInfo>(),
+                Reposts = e.CbcReports?.Select(GetReportBody).ToArray() ?? Array.Empty<ReportBody>(),
             };
         }
 
@@ -79,12 +80,12 @@ namespace TaxLegal.Cbc.Report.Application.Schemas.V200.Models.Xml
 
             return new Organisation
             {
-                Jurisdictions = e.ResCountryCode.Select(x => Parse<Alpha2Code>(x)).ToArray(),
+                Jurisdictions = e.ResCountryCode?.Select(x => Parse<Alpha2Code>(x)).ToArray() ?? Array.Empty<Alpha2Code>(),
                 HasTin = hasTin,
                 Tin = hasTin ? GetTin(e.TIN) : new Tidn { Tin = NoTin },
-                In = e.IN.Select(GetIn).ToArray(),
-                Name = e.Name.Select(x => x.Value).ToArray(),
-                Address = e.Address.Select(GetAddress).ToArray(),
+                In = e.IN?.Select(GetIn).ToArray() ?? Array.Empty<Idn>(),
+                Name = e.Name?.Select(x => x.Value).ToArray() ?? Array.Empty<string>(),
+                Address = e.Address?.Select(GetAddress).ToArray() ?? Array.Empty<Address>(),
             };
         }
 
@@ -113,8 +114,8 @@ namespace TaxLegal.Cbc.Report.Application.Schemas.V200.Models.Xml
             {
                 Doc = GetDoc(e.DocSpec),
                 OtherInfo = e.OtherInfo.Select(GetOtherInfo).ToArray(),
-                Jurisdiction = e.ResCountryCode.Select(x => Parse<Alpha2Code>(x)).ToArray(),
-                SummaryTypes = e.SummaryRef.Select(x => Parse<SummaryTypeEnum>(x)).ToArray(),
+                Jurisdiction = e.ResCountryCode?.Select(x => Parse<Alpha2Code>(x)).ToArray() ?? Array.Empty<Alpha2Code>(),
+                SummaryTypes = e.SummaryRef?.Select(x => Parse<SummaryTypeEnum>(x)).ToArray() ?? Array.Empty<SummaryTypeEnum>(),
             };
         }
 
