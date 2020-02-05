@@ -114,7 +114,7 @@ namespace TaxLegal.Cbc.Report.Application.Schemas.V200.Models.Xml
             {
                 Doc = GetDoc(e.DocSpec),
                 OtherInfo = e.OtherInfo.Select(GetOtherInfo).ToArray(),
-                Jurisdiction = e.ResCountryCode?.Select(x => Parse<Alpha2Code>(x)).ToArray() ?? Array.Empty<Alpha2Code>(),
+                Jurisdictions = e.ResCountryCode?.Select(x => Parse<Alpha2Code>(x)).ToArray() ?? Array.Empty<Alpha2Code>(),
                 SummaryTypes = e.SummaryRef?.Select(x => Parse<SummaryTypeEnum>(x)).ToArray() ?? Array.Empty<SummaryTypeEnum>(),
             };
         }
