@@ -6,7 +6,7 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <OutputType>Exe</OutputType>
         <DebugType>portable</DebugType>
-        <LangVersion>8</LangVersion>
+        <LangVersion>latest</LangVersion>
         <WarningsAsErrors>true</WarningsAsErrors>
         <IsPackable>false</IsPackable>
         <Nullable>enable</Nullable>

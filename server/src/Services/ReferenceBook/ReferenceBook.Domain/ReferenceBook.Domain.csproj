@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <PackageId>ReferenceBook.Domain</PackageId>
         <PackageVersion>0.1.0</PackageVersion>
@@ -6,7 +6,7 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <OutputType>Library</OutputType>
         <DebugType>portable</DebugType>
-        <LangVersion>8</LangVersion>
+        <LangVersion>latest</LangVersion>
         <WarningsAsErrors>true</WarningsAsErrors>
         <IsPackable>false</IsPackable>
         <Nullable>enable</Nullable>
