@@ -34,14 +34,16 @@ namespace TaxLegal.Cbc.Report.Api.Controllers
 
         [HttpPost("[action]")]
         [ProducesResponseType(typeof(ReportData), (int) HttpStatusCode.OK)]
-        public async Task<ActionResult<ReportData>> Parse([FromQuery] SupportedSchema schema, [OpenApiFile] IFormFile file)
+        public async Task<ActionResult<ReportData>> Parse([OpenApiFile] IFormFile file)
         {
             var filePath = Path.GetTempFileName();
             await using var stream = System.IO.File.Create(filePath);
             await file.CopyToAsync(stream);
             stream.Position = 0;
 
-            var reportData = _reportService.Parse(schema, stream);
+            var reportData = _reportService.Parse(stream);
+            if (reportData is null)
+                return BadRequest(new ValidationMessage[] { new ValidationMessage(ValidationSeverity.Error, "Failed to deserialize file") });
 
             return Ok(reportData);
         }

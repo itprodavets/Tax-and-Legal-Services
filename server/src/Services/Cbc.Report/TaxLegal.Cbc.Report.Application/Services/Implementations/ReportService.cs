@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using Autofac.Features.Indexed;
 using TaxLegal.Cbc.Report.Application.Dto;
@@ -22,18 +23,29 @@ namespace TaxLegal.Cbc.Report.Application.Services.Implementations
             _schemaModels = schemaModels;
         }
 
-        public ReportData Parse(SupportedSchema schema, Stream file)
+        public ReportData? Parse(Stream stream)
         {
-            var schemaModel = _schemaModels[schema];
+            var schemas = Enum.GetValues(typeof(SupportedSchema)).OfType<SupportedSchema>().OrderByDescending(x => x).ToArray();
+            foreach (var schema in schemas)
+            {
+                var schemaModel = _schemaModels[schema];
+                var schemaService = _schemaServices[schema];
 
-            var serializer = new XmlSerializer(schemaModel);
-            var raw = serializer.Deserialize(file);
-            if (raw is null)
-                throw new ArgumentException($"Failed to deserialize XML into object of {schema} version");
+                var serializer = new XmlSerializer(schemaModel);
+                try
+                {
+                    stream.Position = 0;
+                    var raw = serializer.Deserialize(stream);
 
-            var schemaService = _schemaServices[schema];
+                    return schemaService.Parse(raw);
+                }
+                catch
+                {
+                    // ignored
+                }
+            }
 
-            return schemaService.Parse(raw);
+            return null;
         }
 
         public IReadOnlyCollection<ValidationMessage> Validate(SupportedSchema schema, Stream file)

@@ -7,7 +7,7 @@ namespace TaxLegal.Cbc.Report.Application.Services.Interfaces
 {
     public interface IReportService
     {
-        ReportData Parse(SupportedSchema schema, Stream file);
+        ReportData? Parse(Stream stream);
         IReadOnlyCollection<ValidationMessage> Validate(SupportedSchema schema, Stream file);
     }
 }
