@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using Autofac.Features.Indexed;
+using Microsoft.Extensions.Logging;
 using TaxLegal.Cbc.Report.Application.Dto;
 using TaxLegal.Cbc.Report.Application.Services.Interfaces;
 
@@ -13,14 +14,17 @@ namespace TaxLegal.Cbc.Report.Application.Services.Implementations
     {
         private readonly IIndex<SupportedSchema, ISchemaService> _schemaServices;
         private readonly IIndex<SupportedSchema, Type> _schemaModels;
+        private readonly ILogger<ReportService> _logger;
 
         public ReportService(
             IIndex<SupportedSchema, ISchemaService> schemaServices,
-            IIndex<SupportedSchema, Type> schemaModels
+            IIndex<SupportedSchema, Type> schemaModels,
+            ILogger<ReportService> logger
         )
         {
             _schemaServices = schemaServices;
             _schemaModels = schemaModels;
+            _logger = logger;
         }
 
         public ReportData? Parse(Stream stream)
@@ -32,16 +36,25 @@ namespace TaxLegal.Cbc.Report.Application.Services.Implementations
                 var schemaService = _schemaServices[schema];
 
                 var serializer = new XmlSerializer(schemaModel);
+
+                object raw;
                 try
                 {
                     stream.Position = 0;
-                    var raw = serializer.Deserialize(stream);
-
-                    return schemaService.Parse(raw);
+                    raw = serializer.Deserialize(stream);
                 }
                 catch
                 {
-                    // ignored
+                    continue;
+                }
+
+                try
+                {
+                    return schemaService.Parse(raw);
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError(e, $"Failed to parse document for {schema} schema");
                 }
             }
 
