@@ -14,6 +14,11 @@ namespace TaxLegal.Cbc.Report.Application.Schemas.V101.Services
             return XmlToModel.Convert((CBC_OECD) raw);
         }
 
+        public object Generate(ReportData data)
+        {
+            return ModelToXml.Convert(data);
+        }
+
         public IReadOnlyCollection<ValidationMessage> Validate(Stream file)
         {
             return this.Validate(file, Path.Combine("Xsd", "1.0.1"));
