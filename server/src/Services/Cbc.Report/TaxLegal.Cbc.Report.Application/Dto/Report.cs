@@ -7,6 +7,6 @@ namespace TaxLegal.Cbc.Report.Application.Dto
         public ReportingEntity ReportingEntity { get; set; } = default!;
         public ConstituentEntity[] ConstituentEntities { get; set; } = Array.Empty<ConstituentEntity>();
         public AdditionalInfo[] AdditionalInfo { get; set; } = Array.Empty<AdditionalInfo>();
-        public ReportBody[] Reposts { get; set; } = Array.Empty<ReportBody>();
+        public ReportBody[] Reports { get; set; } = Array.Empty<ReportBody>();
     }
 }

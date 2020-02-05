@@ -46,7 +46,7 @@ namespace TaxLegal.Cbc.Report.Application.Schemas.V200.Models.Xml
                 ReportingEntity = GetReportingEntity(e.ReportingEntity),
                 ConstituentEntities = e.CbcReports?.SelectMany(x => x.ConstEntities).Select(GetConstituentEntity).ToArray() ?? Array.Empty<ConstituentEntity>(),
                 AdditionalInfo = e.AdditionalInfo?.Select(GetAdditionalInfo).ToArray() ?? Array.Empty<AdditionalInfo>(),
-                Reposts = e.CbcReports?.Select(GetReportBody).ToArray() ?? Array.Empty<ReportBody>(),
+                Reports = e.CbcReports?.Select(GetReportBody).ToArray() ?? Array.Empty<ReportBody>(),
             };
         }
 
