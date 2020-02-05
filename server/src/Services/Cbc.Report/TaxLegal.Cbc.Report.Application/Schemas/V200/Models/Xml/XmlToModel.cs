@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using Core.Domain.Enums.Countries;
 using Core.Domain.Enums.Currencies;
@@ -76,13 +75,13 @@ namespace TaxLegal.Cbc.Report.Application.Schemas.V200.Models.Xml
 
         private static Organisation GetOrganisation(OrganisationParty_Type e)
         {
-            var hasTin = e.TIN != null && !string.IsNullOrWhiteSpace(e.TIN.Value) && e.TIN.Value.ToUpper() != "NOTIN";
+            var hasTin = e.TIN != null && !string.IsNullOrWhiteSpace(e.TIN.Value) && e.TIN.Value.ToUpper() != NoTin;
 
             return new Organisation
             {
                 Jurisdictions = e.ResCountryCode.Select(x => Parse<Alpha2Code>(x)).ToArray(),
                 HasTin = hasTin,
-                Tin = hasTin ? GetTin(e.TIN) : new Tidn { Tin = "NOTIN" },
+                Tin = hasTin ? GetTin(e.TIN) : new Tidn { Tin = NoTin },
                 In = e.IN.Select(GetIn).ToArray(),
                 Name = e.Name.Select(x => x.Value).ToArray(),
                 Address = e.Address.Select(GetAddress).ToArray(),

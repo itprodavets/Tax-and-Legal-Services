@@ -1,37 +1,200 @@
-// using System.Linq;
-// using TaxLegal.Cbc.Report.Application.Dto;
-//
-// namespace TaxLegal.Cbc.Report.Application.Schemas.V101.Models.Xml
-// {
-//     public class XmlToModel
-//     {
-//         public ReportData Parse()
-//         {
-//             var data = new ReportData
-//             {
-//                 MessageSpec = CreateMessageSpec()
-//             };
-//             return data;
-//         }
-//
-//         private MessageSpec CreateMessageSpec()
-//         {
-//             var messageSpec = new MessageSpec()
-//             {
-//                 SendingEntityIn = MessageSpec.SendingEntityIN,
-//                 TransmittingCountry = MessageSpec.TransmittingCountry.ToString("G"),
-//                 ReceivingCountry = MessageSpec.ReceivingCountry.Select<Application.Xml.Schemas.V101.CountryCode_Type, string>(x => x.ToString("G")).ToArray(),
-//                 MessageType = MessageSpec.MessageType.ToString("G"),
-//                 Language = MessageSpec.Language.ToString("G"),
-//                 Warning = MessageSpec.Warning,
-//                 Contact = MessageSpec.Contact,
-//                 MessageRefId = MessageSpec.MessageRefId,
-//                 MessageTypeIndic = MessageSpec.MessageTypeIndic.ToString("G"),
-//                 CorrMessageRefId = MessageSpec.CorrMessageRefId,
-//                 ReportingPeriod = MessageSpec.ReportingPeriod,
-//                 Timestamp = MessageSpec.Timestamp
-//             };
-//             return messageSpec;
-//         }
-//     }
-// }
+using System.Linq;
+using Core.Domain.Enums.Countries;
+using Core.Domain.Enums.Currencies;
+using Core.Domain.Enums.Languages;
+using TaxLegal.Cbc.Report.Application.Dto;
+using static TaxLegal.Cbc.Report.Application.Schemas.Helper;
+
+namespace TaxLegal.Cbc.Report.Application.Schemas.V101.Models.Xml
+{
+    public static class XmlToModel
+    {
+        public static ReportData Convert(CBC_OECD model)
+        {
+            return new ReportData
+            {
+                Version = SupportedSchema.OECD_200,
+                Message = GetMessage(model.MessageSpec),
+                Reports = model.CbcBody.Select(GetReport).ToArray(),
+            };
+        }
+
+        private static Message GetMessage(MessageSpec_Type e)
+        {
+            return new Message
+            {
+                SendingEntityIn = e.SendingEntityIN,
+                Jurisdiction = Parse<Alpha2Code>(e.TransmittingCountry),
+                Jurisdictions = e.ReceivingCountry.Select(x => Parse<Alpha2Code>(x)).ToArray(),
+                Type = Parse<MessageTypeEnum>(e.MessageType),
+                Language = Parse<LanguageCode>(e.Language),
+                Warning = e.Warning,
+                Contact = e.Contact,
+                RefId = e.MessageRefId,
+                TypeIndic = Parse<MessageTypeIndicEnum>(e.MessageTypeIndic),
+                CorrMessageRefId = e.CorrMessageRefId,
+                ReportingPeriod = e.ReportingPeriod,
+                Timestamp = e.Timestamp,
+            };
+        }
+
+        private static Dto.Report GetReport(CbcBody_Type e)
+        {
+            return new Dto.Report
+            {
+                ReportingEntity = GetReportingEntity(e.ReportingEntity),
+                ConstituentEntities = e.CbcReports.SelectMany(x => x.ConstEntities).Select(GetConstituentEntity).ToArray(),
+                AdditionalInfo = e.AdditionalInfo.Select(GetAdditionalInfo).ToArray(),
+                Reposts = e.CbcReports.Select(GetReportBody).ToArray(),
+            };
+        }
+
+        private static ReportingEntity GetReportingEntity(CorrectableReportingEntity_Type e)
+        {
+            return new ReportingEntity
+            {
+                Doc = GetDoc(e.DocSpec),
+                Organisation = GetOrganisation(e.Entity),
+                NameMNEGroup = string.Empty,
+                Role = Parse<ReportingRoleEnum>(e.ReportingRole),
+                StartDate = default,
+                EndDate = default,
+            };
+        }
+
+        private static Doc GetDoc(DocSpec_Type e)
+        {
+            return new Doc
+            {
+                Type = Parse<DocTypeEnum>(e.DocTypeIndic),
+                RefId = e.DocRefId,
+                CorrDocRefId = e.CorrMessageRefId,
+                CorrMessageRefId = e.CorrMessageRefId,
+            };
+        }
+
+        private static Organisation GetOrganisation(OrganisationParty_Type e)
+        {
+            var hasTin = e.TIN != null && !string.IsNullOrWhiteSpace(e.TIN.Value) && e.TIN.Value.ToUpper() != NoTin;
+
+            return new Organisation
+            {
+                Jurisdictions = e.ResCountryCode.Select(x => Parse<Alpha2Code>(x)).ToArray(),
+                HasTin = hasTin,
+                Tin = hasTin ? GetTin(e.TIN) : new Tidn { Tin = NoTin },
+                In = e.IN.Select(GetIn).ToArray(),
+                Name = e.Name.Select(x => x.Value).ToArray(),
+                Address = e.Address.Select(GetAddress).ToArray(),
+            };
+        }
+
+        private static Tidn GetTin(TIN_Type e)
+        {
+            return new Tidn
+            {
+                Jurisdiction = Parse<Alpha2Code>(e.issuedBy),
+                Tin = e.Value,
+            };
+        }
+
+        private static Idn GetIn(OrganisationIN_Type e)
+        {
+            return new Idn
+            {
+                Jurisdiction = Parse<Alpha2Code>(e.issuedBy),
+                In = e.Value,
+                Type = e.INType,
+            };
+        }
+
+        private static AdditionalInfo GetAdditionalInfo(CorrectableAdditionalInfo_Type e)
+        {
+            return new AdditionalInfo
+            {
+                Doc = GetDoc(e.DocSpec),
+                OtherInfo = new[] { new OtherInfo() { Info = e.OtherInfo } },
+                Jurisdiction = e.ResCountryCode.Select(x => Parse<Alpha2Code>(x)).ToArray(),
+                SummaryTypes = e.SummaryRef.Select(x => Parse<SummaryTypeEnum>(x)).ToArray(),
+            };
+        }
+
+        private static ReportBody GetReportBody(CorrectableCbcReport_Type e)
+        {
+            return new ReportBody
+            {
+                Doc = GetDoc(e.DocSpec),
+                Jurisdiction = Parse<Alpha2Code>(e.ResCountryCode),
+                Summary = GetSummary(e.Summary),
+            };
+        }
+
+        private static Summary GetSummary(CorrectableCbcReport_TypeSummary e)
+        {
+            return new Summary
+            {
+                Unrelated = GetMonAmnt(e.Revenues.Unrelated),
+                Related = GetMonAmnt(e.Revenues.Related),
+                Total = GetMonAmnt(e.Revenues.Total),
+                ProfitOrLoss = GetMonAmnt(e.ProfitOrLoss),
+                TaxPaid = GetMonAmnt(e.TaxPaid),
+                TaxAccrued = GetMonAmnt(e.TaxAccrued),
+                Capital = GetMonAmnt(e.Capital),
+                Earnings = GetMonAmnt(e.Earnings),
+                NbEmployees = e.NbEmployees,
+                Assets = GetMonAmnt(e.Assets),
+            };
+        }
+
+        private static MonAmnt GetMonAmnt(MonAmnt_Type e)
+        {
+            return new MonAmnt
+            {
+                Currency = Parse<CurrencyCode>(e.currCode),
+                Value = e.Value,
+            };
+        }
+
+        private static ConstituentEntity GetConstituentEntity(ConstituentEntity_Type e)
+        {
+            return new ConstituentEntity
+            {
+                Organisation = GetOrganisation(e.ConstEntity),
+                Jurisdiction = Parse<Alpha2Code>(e.IncorpCountryCode),
+                BizActivities = e.BizActivities.Select(x => Parse<BizActivityTypeEnum>(x)).ToArray(),
+                OtherInfo = e.OtherEntityInfo,
+            };
+        }
+
+
+        private static Address GetAddress(Address_Type e)
+        {
+            var fix = e.Items.OfType<AddressFix_Type>().FirstOrDefault();
+            var free = e.Items.OfType<string>().FirstOrDefault();
+
+            return new Address
+            {
+                Jurisdiction = Parse<Alpha2Code>(e.CountryCode),
+                Type = Parse<AddressTypeEnum>(e.legalAddressType),
+                IsFixed = fix != null,
+                Fix = fix is null ? default! : GetAddressFix(fix),
+                Free = free,
+            };
+        }
+
+        private static AddressFix GetAddressFix(AddressFix_Type e)
+        {
+            return new AddressFix
+            {
+                Street = e.Street,
+                BuildingIdentifier = e.BuildingIdentifier,
+                SuiteIdentifier = e.SuiteIdentifier,
+                FloorIdentifier = e.FloorIdentifier,
+                Districtname = e.DistrictName,
+                Pob = e.POB,
+                PostCode = e.PostCode,
+                City = e.City,
+                CountrySubentity = e.CountrySubentity,
+            };
+        }
+    }
+}

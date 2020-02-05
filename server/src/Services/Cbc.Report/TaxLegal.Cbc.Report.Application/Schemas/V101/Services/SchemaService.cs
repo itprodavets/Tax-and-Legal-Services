@@ -11,8 +11,7 @@ namespace TaxLegal.Cbc.Report.Application.Schemas.V101.Services
     {
         public ReportData Parse(object raw)
         {
-            var model = (CBC_OECD) raw;
-            throw new System.NotImplementedException();
+            return XmlToModel.Convert((CBC_OECD) raw);
         }
 
         public IReadOnlyCollection<ValidationMessage> Validate(Stream file)
