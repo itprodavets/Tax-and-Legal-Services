@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Microsoft.AspNetCore.Http;
@@ -49,12 +51,26 @@ namespace TaxLegal.Cbc.Report.Api.Controllers
         }
 
         [HttpPost("[action]")]
-        [ProducesResponseType(typeof(FileResult), (int) HttpStatusCode.OK)]
-        public async Task<FileResult> Generate([FromQuery] SupportedSchema schema, [FromBody] ReportData data)
+        [ProducesResponseType(typeof(ContentResult), (int) HttpStatusCode.OK)]
+        public IActionResult Generate([FromQuery] SupportedSchema schema, [FromBody] JsonElement raw)
         {
-            throw new NotImplementedException();
-            // var file = await _cbCReporting.ModelToXml(schema, data);
-            // return XmlFileResponse(schema, file.Content, file.FileName, file.Encoding);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            if (schema == 0)
+                return BadRequest("Schema missing");
+
+            var json = raw.GetRawText();
+            var options = new JsonSerializerOptions
+            {
+                DictionaryKeyPolicy = JsonNamingPolicy.CamelCase,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                PropertyNameCaseInsensitive = true,
+            };
+            var data = JsonSerializer.Deserialize<ReportData>(json, options);
+            var xml = _reportService.Generate(data, schema);
+
+            return Content(xml, MediaTypeNames.Application.Xml);
         }
 
         [HttpPost("[action]")]
