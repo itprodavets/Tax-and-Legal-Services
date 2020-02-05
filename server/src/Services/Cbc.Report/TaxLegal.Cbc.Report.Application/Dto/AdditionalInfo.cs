@@ -7,7 +7,7 @@ namespace TaxLegal.Cbc.Report.Application.Dto
     {
         public Doc Doc { get; set; } = default!;
         public OtherInfo[] OtherInfo { get; set; } = Array.Empty<OtherInfo>();
-        public Alpha2Code[] Jurisdiction { get; set; } = Array.Empty<Alpha2Code>();
+        public Alpha2Code[] Jurisdictions { get; set; } = Array.Empty<Alpha2Code>();
         public SummaryTypeEnum[] SummaryTypes { get; set; } = Array.Empty<SummaryTypeEnum>();
     }
 }
