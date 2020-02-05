@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml.Serialization;
 using Autofac.Features.Indexed;
 using Microsoft.Extensions.Logging;
@@ -59,6 +60,21 @@ namespace TaxLegal.Cbc.Report.Application.Services.Implementations
             }
 
             return null;
+        }
+
+        public string Generate(ReportData data, SupportedSchema schema)
+        {
+            var schemaModel = _schemaModels[schema];
+            var schemaService = _schemaServices[schema];
+
+            var sb = new StringBuilder();
+            var serializer = new XmlSerializer(schemaModel);
+
+            using var writer = new StringWriter(sb);
+            var raw = schemaService.Generate(data);
+            serializer.Serialize(writer, raw);
+
+            return sb.ToString();
         }
 
         public IReadOnlyCollection<ValidationMessage> Validate(SupportedSchema schema, Stream file)
