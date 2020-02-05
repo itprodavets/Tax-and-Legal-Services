@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using Autofac.Features.Indexed;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using TaxLegal.Cbc.Report.Application.Configurations;
 using TaxLegal.Cbc.Report.Application.Dto;
 using TaxLegal.Cbc.Report.Application.Services.Interfaces;
 
@@ -13,16 +15,19 @@ namespace TaxLegal.Cbc.Report.Application.Services.Implementations
 {
     public class ReportService : IReportService
     {
+        private readonly IConfiguration _configuration;
         private readonly IIndex<SupportedSchema, ISchemaService> _schemaServices;
         private readonly IIndex<SupportedSchema, Type> _schemaModels;
         private readonly ILogger<ReportService> _logger;
 
         public ReportService(
+            IConfiguration configuration,
             IIndex<SupportedSchema, ISchemaService> schemaServices,
             IIndex<SupportedSchema, Type> schemaModels,
             ILogger<ReportService> logger
         )
         {
+            _configuration = configuration;
             _schemaServices = schemaServices;
             _schemaModels = schemaModels;
             _logger = logger;
@@ -70,9 +75,9 @@ namespace TaxLegal.Cbc.Report.Application.Services.Implementations
             var sb = new StringBuilder();
             var serializer = new XmlSerializer(schemaModel);
 
-            using var writer = new StringWriter(sb);
+            using var writer = new StringWriterWithEncoding(sb);
             var raw = schemaService.Generate(data);
-            serializer.Serialize(writer, raw);
+            serializer.Serialize(writer, raw, XmlSerializerNamespaces(schema));
 
             return sb.ToString();
         }
@@ -82,6 +87,34 @@ namespace TaxLegal.Cbc.Report.Application.Services.Implementations
             var schemaService = _schemaServices[schema];
 
             return schemaService.Validate(file);
+        }
+
+
+        private XmlSerializerNamespaces XmlSerializerNamespaces(SupportedSchema schema)
+        {
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+
+            var configs = _configuration.GetSection("App:XmlFile").Get<XmlFileConfiguration[]>();
+            var config = configs.SingleOrDefault(x => x.SupportedSchema == schema);
+
+            if (config?.Namespaces == null)
+                return ns;
+
+            foreach (var (key, value) in config.Namespaces)
+                ns.Add(key, value);
+
+            return ns;
+        }
+
+        private sealed class StringWriterWithEncoding : StringWriter
+        {
+            public override Encoding Encoding { get; }
+
+            public StringWriterWithEncoding(StringBuilder sb) : base(sb)
+            {
+                Encoding = Encoding.GetEncoding(1251);
+            }
         }
     }
 }
