@@ -52,13 +52,10 @@ namespace TaxLegal.Cbc.Report.Api.Controllers
 
         [HttpPost("[action]")]
         [ProducesResponseType(typeof(ContentResult), (int) HttpStatusCode.OK)]
-        public IActionResult Generate([FromQuery] SupportedSchema schema, [FromBody] JsonElement raw)
+        public IActionResult Generate([FromBody] JsonElement raw)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
-            if (schema == 0)
-                return BadRequest("Schema missing");
 
             var json = raw.GetRawText();
             var options = new JsonSerializerOptions
@@ -68,7 +65,7 @@ namespace TaxLegal.Cbc.Report.Api.Controllers
                 PropertyNameCaseInsensitive = true,
             };
             var data = JsonSerializer.Deserialize<ReportData>(json, options);
-            var xml = _reportService.Generate(data, schema);
+            var xml = _reportService.Generate(data);
 
             return Content(xml, MediaTypeNames.Application.Xml);
         }

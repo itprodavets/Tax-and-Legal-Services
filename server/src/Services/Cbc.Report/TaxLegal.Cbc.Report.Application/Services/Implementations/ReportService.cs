@@ -67,8 +67,9 @@ namespace TaxLegal.Cbc.Report.Application.Services.Implementations
             return null;
         }
 
-        public string Generate(ReportData data, SupportedSchema schema)
+        public string Generate(ReportData data)
         {
+            var schema = data.Version;
             var schemaModel = _schemaModels[schema];
             var schemaService = _schemaServices[schema];
 
