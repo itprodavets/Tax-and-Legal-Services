@@ -1,0 +1,9 @@
+﻿{
+  "profiles": {
+    "ReferenceBook.Generator": {
+      "commandName": "Project",
+      "workingDirectory": "/projects/dka/TaxLegal",
+      "commandLineArgs": "server/src/Services/ReferenceBook/ReferenceBook.Api/Setup/Countries.tsv server/src/Services/ReferenceBook/ReferenceBook.Api/Setup/Currencies.tsv server/src/Services/ReferenceBook/ReferenceBook.Api/Setup/Languages.tsv client/src/modules/country/models/enum.model.ts client/src/modules/currency/models/enum.model.ts client/src/modules/language/models/enum.model.ts",
+    }
+  }
+}

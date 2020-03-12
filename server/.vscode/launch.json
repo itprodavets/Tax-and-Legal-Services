@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [{
+            "name": "cbc-report-api",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/Services/Cbc.Report/TaxLegal.Cbc.Report.Api/bin/Debug/netcoreapp3.1/TaxLegal.Cbc.Report.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Services/Cbc.Report/TaxLegal.Cbc.Report.Api/bin/Debug/netcoreapp3.1",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "ref-books-api",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/Services/ReferenceBook/ReferenceBook.Api/bin/Debug/netcoreapp3.1/ReferenceBook.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Services/ReferenceBook/ReferenceBook.Api",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        }
+    ]
+}

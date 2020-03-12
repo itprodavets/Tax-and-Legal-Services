@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  tl-cbc-report-api:
+    build:
+      context: ../server
+      dockerfile: src/Services/Cbc.Report/TaxLegal.Cbc.Report.Api/Dockerfile
+    image: tl_cbc_report_api
+    container_name: tl_cbc_report_api
+    restart: always
+    ports:
+      - '9101:80'
+    volumes:
+      - '../run/server/cbc-report/appsettings.json:/app/appsettings.json'
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
+        max-file: '1'
+networks:
+  default:
+    external:
+      name: tl_net

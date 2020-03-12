@@ -1,0 +1,1305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CBC_OECD version="version1" xmlns="urn:oecd:ties:cbc:v1">
+  <MessageSpec>
+    <SendingEntityIN>SendingEntityIN1</SendingEntityIN>
+    <TransmittingCountry>AF</TransmittingCountry>
+    <ReceivingCountry>AF</ReceivingCountry>
+    <ReceivingCountry>AX</ReceivingCountry>
+    <ReceivingCountry>AL</ReceivingCountry>
+    <MessageType>CBC</MessageType>
+    <Language>AA</Language>
+    <Warning>Warning1</Warning>
+    <Contact>Contact1</Contact>
+    <MessageRefId>MessageRefId1</MessageRefId>
+    <MessageTypeIndic>CBC401</MessageTypeIndic>
+    <CorrMessageRefId>CorrMessageRefId1</CorrMessageRefId>
+    <CorrMessageRefId>CorrMessageRefId2</CorrMessageRefId>
+    <CorrMessageRefId>CorrMessageRefId3</CorrMessageRefId>
+    <ReportingPeriod>1900-01-01</ReportingPeriod>
+    <Timestamp>1900-01-01T01:01:01+08:00</Timestamp>
+  </MessageSpec>
+  <CbcBody>
+    <ReportingEntity>
+      <Entity>
+        <ResCountryCode>AF</ResCountryCode>
+        <ResCountryCode>AX</ResCountryCode>
+        <ResCountryCode>AL</ResCountryCode>
+        <TIN issuedBy="AF">TIN1</TIN>
+        <IN issuedBy="AF" INType="INType1">IN1</IN>
+        <IN issuedBy="AX" INType="INType2">IN2</IN>
+        <IN issuedBy="AL" INType="INType3">IN3</IN>
+        <Name>Name1</Name>
+        <Name>Name2</Name>
+        <Name>Name3</Name>
+        <Address legalAddressType="OECD301">
+          <CountryCode>AF</CountryCode>
+          <AddressFree>AddressFree1</AddressFree>
+        </Address>
+        <Address legalAddressType="OECD302">
+          <CountryCode>AX</CountryCode>
+          <AddressFree>AddressFree2</AddressFree>
+        </Address>
+        <Address legalAddressType="OECD303">
+          <CountryCode>AL</CountryCode>
+          <AddressFree>AddressFree3</AddressFree>
+        </Address>
+      </Entity>
+      <ReportingRole>CBC701</ReportingRole>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD0</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId1</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId1</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId1</CorrDocRefId>
+      </DocSpec>
+    </ReportingEntity>
+    <CbcReports>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD0</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId1</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId1</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId1</CorrDocRefId>
+      </DocSpec>
+      <ResCountryCode>AF</ResCountryCode>
+      <Summary>
+        <Revenues>
+          <Unrelated currCode="AED">1</Unrelated>
+          <Related currCode="AED">1</Related>
+          <Total currCode="AED">1</Total>
+        </Revenues>
+        <ProfitOrLoss currCode="AED">1</ProfitOrLoss>
+        <TaxPaid currCode="AED">1</TaxPaid>
+        <TaxAccrued currCode="AED">1</TaxAccrued>
+        <Capital currCode="AED">1</Capital>
+        <Earnings currCode="AED">1</Earnings>
+        <NbEmployees>1</NbEmployees>
+        <Assets currCode="AED">1</Assets>
+      </Summary>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>AF</ResCountryCode>
+          <ResCountryCode>AX</ResCountryCode>
+          <ResCountryCode>AL</ResCountryCode>
+          <TIN issuedBy="AX">TIN2</TIN>
+          <IN issuedBy="DZ" INType="INType4">IN4</IN>
+          <IN issuedBy="AS" INType="INType5">IN5</IN>
+          <IN issuedBy="AD" INType="INType6">IN6</IN>
+          <Name>Name4</Name>
+          <Name>Name5</Name>
+          <Name>Name6</Name>
+          <Address legalAddressType="OECD304">
+            <CountryCode>DZ</CountryCode>
+            <AddressFree>AddressFree4</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>AS</CountryCode>
+            <AddressFree>AddressFree5</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>AD</CountryCode>
+            <AddressFree>AddressFree6</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AF</IncorpCountryCode>
+        <BizActivities>CBC501</BizActivities>
+        <BizActivities>CBC502</BizActivities>
+        <BizActivities>CBC503</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo1</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>DZ</ResCountryCode>
+          <ResCountryCode>AS</ResCountryCode>
+          <ResCountryCode>AD</ResCountryCode>
+          <TIN issuedBy="AL">TIN3</TIN>
+          <IN issuedBy="AO" INType="INType7">IN7</IN>
+          <IN issuedBy="AI" INType="INType8">IN8</IN>
+          <IN issuedBy="AQ" INType="INType9">IN9</IN>
+          <Name>Name7</Name>
+          <Name>Name8</Name>
+          <Name>Name9</Name>
+          <Address legalAddressType="OECD302">
+            <CountryCode>AO</CountryCode>
+            <AddressFree>AddressFree7</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD303">
+            <CountryCode>AI</CountryCode>
+            <AddressFree>AddressFree8</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>AQ</CountryCode>
+            <AddressFree>AddressFree9</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AX</IncorpCountryCode>
+        <BizActivities>CBC504</BizActivities>
+        <BizActivities>CBC505</BizActivities>
+        <BizActivities>CBC506</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo2</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>AO</ResCountryCode>
+          <ResCountryCode>AI</ResCountryCode>
+          <ResCountryCode>AQ</ResCountryCode>
+          <TIN issuedBy="DZ">TIN4</TIN>
+          <IN issuedBy="AG" INType="INType10">IN10</IN>
+          <IN issuedBy="AR" INType="INType11">IN11</IN>
+          <IN issuedBy="AM" INType="INType12">IN12</IN>
+          <Name>Name10</Name>
+          <Name>Name11</Name>
+          <Name>Name12</Name>
+          <Address legalAddressType="OECD305">
+            <CountryCode>AG</CountryCode>
+            <AddressFree>AddressFree10</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>AR</CountryCode>
+            <AddressFree>AddressFree11</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD302">
+            <CountryCode>AM</CountryCode>
+            <AddressFree>AddressFree12</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AL</IncorpCountryCode>
+        <BizActivities>CBC507</BizActivities>
+        <BizActivities>CBC508</BizActivities>
+        <BizActivities>CBC509</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo3</OtherEntityInfo>
+      </ConstEntities>
+    </CbcReports>
+    <CbcReports>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD1</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId2</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId2</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId2</CorrDocRefId>
+      </DocSpec>
+      <ResCountryCode>AX</ResCountryCode>
+      <Summary>
+        <Revenues>
+          <Unrelated currCode="AFN">-79228162514264337593543950335</Unrelated>
+          <Related currCode="AFN">-79228162514264337593543950335</Related>
+          <Total currCode="AFN">-79228162514264337593543950335</Total>
+        </Revenues>
+        <ProfitOrLoss currCode="AFN">-79228162514264337593543950335</ProfitOrLoss>
+        <TaxPaid currCode="AFN">-79228162514264337593543950335</TaxPaid>
+        <TaxAccrued currCode="AFN">-79228162514264337593543950335</TaxAccrued>
+        <Capital currCode="AFN">-79228162514264337593543950335</Capital>
+        <Earnings currCode="AFN">-79228162514264337593543950335</Earnings>
+        <NbEmployees>-79228162514264337593543950335</NbEmployees>
+        <Assets currCode="AFN">-79228162514264337593543950335</Assets>
+      </Summary>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>AG</ResCountryCode>
+          <ResCountryCode>AR</ResCountryCode>
+          <ResCountryCode>AM</ResCountryCode>
+          <TIN issuedBy="AS">TIN5</TIN>
+          <IN issuedBy="AW" INType="INType13">IN13</IN>
+          <IN issuedBy="AU" INType="INType14">IN14</IN>
+          <IN issuedBy="AT" INType="INType15">IN15</IN>
+          <Name>Name13</Name>
+          <Name>Name14</Name>
+          <Name>Name15</Name>
+          <Address legalAddressType="OECD303">
+            <CountryCode>AW</CountryCode>
+            <AddressFree>AddressFree13</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>AU</CountryCode>
+            <AddressFree>AddressFree14</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>AT</CountryCode>
+            <AddressFree>AddressFree15</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>DZ</IncorpCountryCode>
+        <BizActivities>CBC510</BizActivities>
+        <BizActivities>CBC511</BizActivities>
+        <BizActivities>CBC512</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo4</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>AW</ResCountryCode>
+          <ResCountryCode>AU</ResCountryCode>
+          <ResCountryCode>AT</ResCountryCode>
+          <TIN issuedBy="AD">TIN6</TIN>
+          <IN issuedBy="AZ" INType="INType16">IN16</IN>
+          <IN issuedBy="BS" INType="INType17">IN17</IN>
+          <IN issuedBy="BH" INType="INType18">IN18</IN>
+          <Name>Name16</Name>
+          <Name>Name17</Name>
+          <Name>Name18</Name>
+          <Address legalAddressType="OECD301">
+            <CountryCode>AZ</CountryCode>
+            <AddressFree>AddressFree16</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD302">
+            <CountryCode>BS</CountryCode>
+            <AddressFree>AddressFree17</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD303">
+            <CountryCode>BH</CountryCode>
+            <AddressFree>AddressFree18</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AS</IncorpCountryCode>
+        <BizActivities>CBC513</BizActivities>
+        <BizActivities>CBC501</BizActivities>
+        <BizActivities>CBC502</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo5</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>AZ</ResCountryCode>
+          <ResCountryCode>BS</ResCountryCode>
+          <ResCountryCode>BH</ResCountryCode>
+          <TIN issuedBy="AO">TIN7</TIN>
+          <IN issuedBy="BD" INType="INType19">IN19</IN>
+          <IN issuedBy="BB" INType="INType20">IN20</IN>
+          <IN issuedBy="BY" INType="INType21">IN21</IN>
+          <Name>Name19</Name>
+          <Name>Name20</Name>
+          <Name>Name21</Name>
+          <Address legalAddressType="OECD304">
+            <CountryCode>BD</CountryCode>
+            <AddressFree>AddressFree19</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>BB</CountryCode>
+            <AddressFree>AddressFree20</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>BY</CountryCode>
+            <AddressFree>AddressFree21</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AD</IncorpCountryCode>
+        <BizActivities>CBC503</BizActivities>
+        <BizActivities>CBC504</BizActivities>
+        <BizActivities>CBC505</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo6</OtherEntityInfo>
+      </ConstEntities>
+    </CbcReports>
+    <CbcReports>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD2</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId3</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId3</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId3</CorrDocRefId>
+      </DocSpec>
+      <ResCountryCode>AL</ResCountryCode>
+      <Summary>
+        <Revenues>
+          <Unrelated currCode="ALL">79228162514264337593543950335</Unrelated>
+          <Related currCode="ALL">79228162514264337593543950335</Related>
+          <Total currCode="ALL">79228162514264337593543950335</Total>
+        </Revenues>
+        <ProfitOrLoss currCode="ALL">79228162514264337593543950335</ProfitOrLoss>
+        <TaxPaid currCode="ALL">79228162514264337593543950335</TaxPaid>
+        <TaxAccrued currCode="ALL">79228162514264337593543950335</TaxAccrued>
+        <Capital currCode="ALL">79228162514264337593543950335</Capital>
+        <Earnings currCode="ALL">79228162514264337593543950335</Earnings>
+        <NbEmployees>79228162514264337593543950335</NbEmployees>
+        <Assets currCode="ALL">79228162514264337593543950335</Assets>
+      </Summary>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>BD</ResCountryCode>
+          <ResCountryCode>BB</ResCountryCode>
+          <ResCountryCode>BY</ResCountryCode>
+          <TIN issuedBy="AI">TIN8</TIN>
+          <IN issuedBy="BE" INType="INType22">IN22</IN>
+          <IN issuedBy="BZ" INType="INType23">IN23</IN>
+          <IN issuedBy="BJ" INType="INType24">IN24</IN>
+          <Name>Name22</Name>
+          <Name>Name23</Name>
+          <Name>Name24</Name>
+          <Address legalAddressType="OECD302">
+            <CountryCode>BE</CountryCode>
+            <AddressFree>AddressFree22</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD303">
+            <CountryCode>BZ</CountryCode>
+            <AddressFree>AddressFree23</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>BJ</CountryCode>
+            <AddressFree>AddressFree24</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AO</IncorpCountryCode>
+        <BizActivities>CBC506</BizActivities>
+        <BizActivities>CBC507</BizActivities>
+        <BizActivities>CBC508</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo7</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>BE</ResCountryCode>
+          <ResCountryCode>BZ</ResCountryCode>
+          <ResCountryCode>BJ</ResCountryCode>
+          <TIN issuedBy="AQ">TIN9</TIN>
+          <IN issuedBy="BM" INType="INType25">IN25</IN>
+          <IN issuedBy="BT" INType="INType26">IN26</IN>
+          <IN issuedBy="BO" INType="INType27">IN27</IN>
+          <Name>Name25</Name>
+          <Name>Name26</Name>
+          <Name>Name27</Name>
+          <Address legalAddressType="OECD305">
+            <CountryCode>BM</CountryCode>
+            <AddressFree>AddressFree25</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>BT</CountryCode>
+            <AddressFree>AddressFree26</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD302">
+            <CountryCode>BO</CountryCode>
+            <AddressFree>AddressFree27</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AI</IncorpCountryCode>
+        <BizActivities>CBC509</BizActivities>
+        <BizActivities>CBC510</BizActivities>
+        <BizActivities>CBC511</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo8</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>BM</ResCountryCode>
+          <ResCountryCode>BT</ResCountryCode>
+          <ResCountryCode>BO</ResCountryCode>
+          <TIN issuedBy="AG">TIN10</TIN>
+          <IN issuedBy="BQ" INType="INType28">IN28</IN>
+          <IN issuedBy="BA" INType="INType29">IN29</IN>
+          <IN issuedBy="BW" INType="INType30">IN30</IN>
+          <Name>Name28</Name>
+          <Name>Name29</Name>
+          <Name>Name30</Name>
+          <Address legalAddressType="OECD303">
+            <CountryCode>BQ</CountryCode>
+            <AddressFree>AddressFree28</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>BA</CountryCode>
+            <AddressFree>AddressFree29</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>BW</CountryCode>
+            <AddressFree>AddressFree30</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AQ</IncorpCountryCode>
+        <BizActivities>CBC512</BizActivities>
+        <BizActivities>CBC513</BizActivities>
+        <BizActivities>CBC501</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo9</OtherEntityInfo>
+      </ConstEntities>
+    </CbcReports>
+    <AdditionalInfo>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD0</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId1</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId1</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId1</CorrDocRefId>
+      </DocSpec>
+      <OtherInfo>OtherInfo1</OtherInfo>
+      <ResCountryCode>AF</ResCountryCode>
+      <ResCountryCode>AX</ResCountryCode>
+      <ResCountryCode>AL</ResCountryCode>
+      <SummaryRef>CBC601</SummaryRef>
+      <SummaryRef>CBC602</SummaryRef>
+      <SummaryRef>CBC603</SummaryRef>
+    </AdditionalInfo>
+    <AdditionalInfo>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD1</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId2</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId2</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId2</CorrDocRefId>
+      </DocSpec>
+      <OtherInfo>OtherInfo2</OtherInfo>
+      <ResCountryCode>DZ</ResCountryCode>
+      <ResCountryCode>AS</ResCountryCode>
+      <ResCountryCode>AD</ResCountryCode>
+      <SummaryRef>CBC604</SummaryRef>
+      <SummaryRef>CBC605</SummaryRef>
+      <SummaryRef>CBC606</SummaryRef>
+    </AdditionalInfo>
+    <AdditionalInfo>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD2</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId3</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId3</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId3</CorrDocRefId>
+      </DocSpec>
+      <OtherInfo>OtherInfo3</OtherInfo>
+      <ResCountryCode>AO</ResCountryCode>
+      <ResCountryCode>AI</ResCountryCode>
+      <ResCountryCode>AQ</ResCountryCode>
+      <SummaryRef>CBC607</SummaryRef>
+      <SummaryRef>CBC608</SummaryRef>
+      <SummaryRef>CBC609</SummaryRef>
+    </AdditionalInfo>
+  </CbcBody>
+  <CbcBody>
+    <ReportingEntity>
+      <Entity>
+        <ResCountryCode>DZ</ResCountryCode>
+        <ResCountryCode>AS</ResCountryCode>
+        <ResCountryCode>AD</ResCountryCode>
+        <TIN issuedBy="AR">TIN11</TIN>
+        <IN issuedBy="BV" INType="INType31">IN31</IN>
+        <IN issuedBy="BR" INType="INType32">IN32</IN>
+        <IN issuedBy="IO" INType="INType33">IN33</IN>
+        <Name>Name31</Name>
+        <Name>Name32</Name>
+        <Name>Name33</Name>
+        <Address legalAddressType="OECD301">
+          <CountryCode>BV</CountryCode>
+          <AddressFree>AddressFree31</AddressFree>
+        </Address>
+        <Address legalAddressType="OECD302">
+          <CountryCode>BR</CountryCode>
+          <AddressFree>AddressFree32</AddressFree>
+        </Address>
+        <Address legalAddressType="OECD303">
+          <CountryCode>IO</CountryCode>
+          <AddressFree>AddressFree33</AddressFree>
+        </Address>
+      </Entity>
+      <ReportingRole>CBC702</ReportingRole>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD1</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId2</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId2</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId2</CorrDocRefId>
+      </DocSpec>
+    </ReportingEntity>
+    <CbcReports>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD3</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId4</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId4</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId4</CorrDocRefId>
+      </DocSpec>
+      <ResCountryCode>DZ</ResCountryCode>
+      <Summary>
+        <Revenues>
+          <Unrelated currCode="AMD">0</Unrelated>
+          <Related currCode="AMD">0</Related>
+          <Total currCode="AMD">0</Total>
+        </Revenues>
+        <ProfitOrLoss currCode="AMD">0</ProfitOrLoss>
+        <TaxPaid currCode="AMD">0</TaxPaid>
+        <TaxAccrued currCode="AMD">0</TaxAccrued>
+        <Capital currCode="AMD">0</Capital>
+        <Earnings currCode="AMD">0</Earnings>
+        <NbEmployees>0</NbEmployees>
+        <Assets currCode="AMD">0</Assets>
+      </Summary>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>BQ</ResCountryCode>
+          <ResCountryCode>BA</ResCountryCode>
+          <ResCountryCode>BW</ResCountryCode>
+          <TIN issuedBy="AM">TIN12</TIN>
+          <IN issuedBy="BN" INType="INType34">IN34</IN>
+          <IN issuedBy="BG" INType="INType35">IN35</IN>
+          <IN issuedBy="BF" INType="INType36">IN36</IN>
+          <Name>Name34</Name>
+          <Name>Name35</Name>
+          <Name>Name36</Name>
+          <Address legalAddressType="OECD304">
+            <CountryCode>BN</CountryCode>
+            <AddressFree>AddressFree34</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>BG</CountryCode>
+            <AddressFree>AddressFree35</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>BF</CountryCode>
+            <AddressFree>AddressFree36</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AG</IncorpCountryCode>
+        <BizActivities>CBC502</BizActivities>
+        <BizActivities>CBC503</BizActivities>
+        <BizActivities>CBC504</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo10</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>BV</ResCountryCode>
+          <ResCountryCode>BR</ResCountryCode>
+          <ResCountryCode>IO</ResCountryCode>
+          <TIN issuedBy="AW">TIN13</TIN>
+          <IN issuedBy="BI" INType="INType37">IN37</IN>
+          <IN issuedBy="KH" INType="INType38">IN38</IN>
+          <IN issuedBy="CM" INType="INType39">IN39</IN>
+          <Name>Name37</Name>
+          <Name>Name38</Name>
+          <Name>Name39</Name>
+          <Address legalAddressType="OECD302">
+            <CountryCode>BI</CountryCode>
+            <AddressFree>AddressFree37</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD303">
+            <CountryCode>KH</CountryCode>
+            <AddressFree>AddressFree38</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>CM</CountryCode>
+            <AddressFree>AddressFree39</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AR</IncorpCountryCode>
+        <BizActivities>CBC505</BizActivities>
+        <BizActivities>CBC506</BizActivities>
+        <BizActivities>CBC507</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo11</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>BN</ResCountryCode>
+          <ResCountryCode>BG</ResCountryCode>
+          <ResCountryCode>BF</ResCountryCode>
+          <TIN issuedBy="AU">TIN14</TIN>
+          <IN issuedBy="CA" INType="INType40">IN40</IN>
+          <IN issuedBy="CV" INType="INType41">IN41</IN>
+          <IN issuedBy="KY" INType="INType42">IN42</IN>
+          <Name>Name40</Name>
+          <Name>Name41</Name>
+          <Name>Name42</Name>
+          <Address legalAddressType="OECD305">
+            <CountryCode>CA</CountryCode>
+            <AddressFree>AddressFree40</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>CV</CountryCode>
+            <AddressFree>AddressFree41</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD302">
+            <CountryCode>KY</CountryCode>
+            <AddressFree>AddressFree42</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AM</IncorpCountryCode>
+        <BizActivities>CBC508</BizActivities>
+        <BizActivities>CBC509</BizActivities>
+        <BizActivities>CBC510</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo12</OtherEntityInfo>
+      </ConstEntities>
+    </CbcReports>
+    <CbcReports>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD10</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId5</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId5</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId5</CorrDocRefId>
+      </DocSpec>
+      <ResCountryCode>AS</ResCountryCode>
+      <Summary>
+        <Revenues>
+          <Unrelated currCode="ANG">2</Unrelated>
+          <Related currCode="ANG">2</Related>
+          <Total currCode="ANG">2</Total>
+        </Revenues>
+        <ProfitOrLoss currCode="ANG">2</ProfitOrLoss>
+        <TaxPaid currCode="ANG">2</TaxPaid>
+        <TaxAccrued currCode="ANG">2</TaxAccrued>
+        <Capital currCode="ANG">2</Capital>
+        <Earnings currCode="ANG">2</Earnings>
+        <NbEmployees>2</NbEmployees>
+        <Assets currCode="ANG">2</Assets>
+      </Summary>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>BI</ResCountryCode>
+          <ResCountryCode>KH</ResCountryCode>
+          <ResCountryCode>CM</ResCountryCode>
+          <TIN issuedBy="AT">TIN15</TIN>
+          <IN issuedBy="CF" INType="INType43">IN43</IN>
+          <IN issuedBy="TD" INType="INType44">IN44</IN>
+          <IN issuedBy="CL" INType="INType45">IN45</IN>
+          <Name>Name43</Name>
+          <Name>Name44</Name>
+          <Name>Name45</Name>
+          <Address legalAddressType="OECD303">
+            <CountryCode>CF</CountryCode>
+            <AddressFree>AddressFree43</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>TD</CountryCode>
+            <AddressFree>AddressFree44</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>CL</CountryCode>
+            <AddressFree>AddressFree45</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AW</IncorpCountryCode>
+        <BizActivities>CBC511</BizActivities>
+        <BizActivities>CBC512</BizActivities>
+        <BizActivities>CBC513</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo13</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>CA</ResCountryCode>
+          <ResCountryCode>CV</ResCountryCode>
+          <ResCountryCode>KY</ResCountryCode>
+          <TIN issuedBy="AZ">TIN16</TIN>
+          <IN issuedBy="CN" INType="INType46">IN46</IN>
+          <IN issuedBy="CX" INType="INType47">IN47</IN>
+          <IN issuedBy="CC" INType="INType48">IN48</IN>
+          <Name>Name46</Name>
+          <Name>Name47</Name>
+          <Name>Name48</Name>
+          <Address legalAddressType="OECD301">
+            <CountryCode>CN</CountryCode>
+            <AddressFree>AddressFree46</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD302">
+            <CountryCode>CX</CountryCode>
+            <AddressFree>AddressFree47</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD303">
+            <CountryCode>CC</CountryCode>
+            <AddressFree>AddressFree48</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AU</IncorpCountryCode>
+        <BizActivities>CBC501</BizActivities>
+        <BizActivities>CBC502</BizActivities>
+        <BizActivities>CBC503</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo14</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>CF</ResCountryCode>
+          <ResCountryCode>TD</ResCountryCode>
+          <ResCountryCode>CL</ResCountryCode>
+          <TIN issuedBy="BS">TIN17</TIN>
+          <IN issuedBy="CO" INType="INType49">IN49</IN>
+          <IN issuedBy="KM" INType="INType50">IN50</IN>
+          <IN issuedBy="CG" INType="INType51">IN51</IN>
+          <Name>Name49</Name>
+          <Name>Name50</Name>
+          <Name>Name51</Name>
+          <Address legalAddressType="OECD304">
+            <CountryCode>CO</CountryCode>
+            <AddressFree>AddressFree49</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>KM</CountryCode>
+            <AddressFree>AddressFree50</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>CG</CountryCode>
+            <AddressFree>AddressFree51</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AT</IncorpCountryCode>
+        <BizActivities>CBC504</BizActivities>
+        <BizActivities>CBC505</BizActivities>
+        <BizActivities>CBC506</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo15</OtherEntityInfo>
+      </ConstEntities>
+    </CbcReports>
+    <CbcReports>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD11</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId6</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId6</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId6</CorrDocRefId>
+      </DocSpec>
+      <ResCountryCode>AD</ResCountryCode>
+      <Summary>
+        <Revenues>
+          <Unrelated currCode="AOA">-79228162514264337593543950334</Unrelated>
+          <Related currCode="AOA">-79228162514264337593543950334</Related>
+          <Total currCode="AOA">-79228162514264337593543950334</Total>
+        </Revenues>
+        <ProfitOrLoss currCode="AOA">-79228162514264337593543950334</ProfitOrLoss>
+        <TaxPaid currCode="AOA">-79228162514264337593543950334</TaxPaid>
+        <TaxAccrued currCode="AOA">-79228162514264337593543950334</TaxAccrued>
+        <Capital currCode="AOA">-79228162514264337593543950334</Capital>
+        <Earnings currCode="AOA">-79228162514264337593543950334</Earnings>
+        <NbEmployees>-79228162514264337593543950334</NbEmployees>
+        <Assets currCode="AOA">-79228162514264337593543950334</Assets>
+      </Summary>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>CN</ResCountryCode>
+          <ResCountryCode>CX</ResCountryCode>
+          <ResCountryCode>CC</ResCountryCode>
+          <TIN issuedBy="BH">TIN18</TIN>
+          <IN issuedBy="CD" INType="INType52">IN52</IN>
+          <IN issuedBy="CK" INType="INType53">IN53</IN>
+          <IN issuedBy="CR" INType="INType54">IN54</IN>
+          <Name>Name52</Name>
+          <Name>Name53</Name>
+          <Name>Name54</Name>
+          <Address legalAddressType="OECD302">
+            <CountryCode>CD</CountryCode>
+            <AddressFree>AddressFree52</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD303">
+            <CountryCode>CK</CountryCode>
+            <AddressFree>AddressFree53</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>CR</CountryCode>
+            <AddressFree>AddressFree54</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>AZ</IncorpCountryCode>
+        <BizActivities>CBC507</BizActivities>
+        <BizActivities>CBC508</BizActivities>
+        <BizActivities>CBC509</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo16</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>CO</ResCountryCode>
+          <ResCountryCode>KM</ResCountryCode>
+          <ResCountryCode>CG</ResCountryCode>
+          <TIN issuedBy="BD">TIN19</TIN>
+          <IN issuedBy="CI" INType="INType55">IN55</IN>
+          <IN issuedBy="HR" INType="INType56">IN56</IN>
+          <IN issuedBy="CU" INType="INType57">IN57</IN>
+          <Name>Name55</Name>
+          <Name>Name56</Name>
+          <Name>Name57</Name>
+          <Address legalAddressType="OECD305">
+            <CountryCode>CI</CountryCode>
+            <AddressFree>AddressFree55</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>HR</CountryCode>
+            <AddressFree>AddressFree56</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD302">
+            <CountryCode>CU</CountryCode>
+            <AddressFree>AddressFree57</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>BS</IncorpCountryCode>
+        <BizActivities>CBC510</BizActivities>
+        <BizActivities>CBC511</BizActivities>
+        <BizActivities>CBC512</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo17</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>CD</ResCountryCode>
+          <ResCountryCode>CK</ResCountryCode>
+          <ResCountryCode>CR</ResCountryCode>
+          <TIN issuedBy="BB">TIN20</TIN>
+          <IN issuedBy="CW" INType="INType58">IN58</IN>
+          <IN issuedBy="CY" INType="INType59">IN59</IN>
+          <IN issuedBy="CZ" INType="INType60">IN60</IN>
+          <Name>Name58</Name>
+          <Name>Name59</Name>
+          <Name>Name60</Name>
+          <Address legalAddressType="OECD303">
+            <CountryCode>CW</CountryCode>
+            <AddressFree>AddressFree58</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>CY</CountryCode>
+            <AddressFree>AddressFree59</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>CZ</CountryCode>
+            <AddressFree>AddressFree60</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>BH</IncorpCountryCode>
+        <BizActivities>CBC513</BizActivities>
+        <BizActivities>CBC501</BizActivities>
+        <BizActivities>CBC502</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo18</OtherEntityInfo>
+      </ConstEntities>
+    </CbcReports>
+    <AdditionalInfo>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD3</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId4</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId4</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId4</CorrDocRefId>
+      </DocSpec>
+      <OtherInfo>OtherInfo4</OtherInfo>
+      <ResCountryCode>AG</ResCountryCode>
+      <ResCountryCode>AR</ResCountryCode>
+      <ResCountryCode>AM</ResCountryCode>
+      <SummaryRef>CBC610</SummaryRef>
+      <SummaryRef>CBC611</SummaryRef>
+      <SummaryRef>CBC601</SummaryRef>
+    </AdditionalInfo>
+    <AdditionalInfo>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD10</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId5</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId5</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId5</CorrDocRefId>
+      </DocSpec>
+      <OtherInfo>OtherInfo5</OtherInfo>
+      <ResCountryCode>AW</ResCountryCode>
+      <ResCountryCode>AU</ResCountryCode>
+      <ResCountryCode>AT</ResCountryCode>
+      <SummaryRef>CBC602</SummaryRef>
+      <SummaryRef>CBC603</SummaryRef>
+      <SummaryRef>CBC604</SummaryRef>
+    </AdditionalInfo>
+    <AdditionalInfo>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD11</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId6</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId6</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId6</CorrDocRefId>
+      </DocSpec>
+      <OtherInfo>OtherInfo6</OtherInfo>
+      <ResCountryCode>AZ</ResCountryCode>
+      <ResCountryCode>BS</ResCountryCode>
+      <ResCountryCode>BH</ResCountryCode>
+      <SummaryRef>CBC605</SummaryRef>
+      <SummaryRef>CBC606</SummaryRef>
+      <SummaryRef>CBC607</SummaryRef>
+    </AdditionalInfo>
+  </CbcBody>
+  <CbcBody>
+    <ReportingEntity>
+      <Entity>
+        <ResCountryCode>AO</ResCountryCode>
+        <ResCountryCode>AI</ResCountryCode>
+        <ResCountryCode>AQ</ResCountryCode>
+        <TIN issuedBy="BY">TIN21</TIN>
+        <IN issuedBy="DK" INType="INType61">IN61</IN>
+        <IN issuedBy="DJ" INType="INType62">IN62</IN>
+        <IN issuedBy="DM" INType="INType63">IN63</IN>
+        <Name>Name61</Name>
+        <Name>Name62</Name>
+        <Name>Name63</Name>
+        <Address legalAddressType="OECD301">
+          <CountryCode>DK</CountryCode>
+          <AddressFree>AddressFree61</AddressFree>
+        </Address>
+        <Address legalAddressType="OECD302">
+          <CountryCode>DJ</CountryCode>
+          <AddressFree>AddressFree62</AddressFree>
+        </Address>
+        <Address legalAddressType="OECD303">
+          <CountryCode>DM</CountryCode>
+          <AddressFree>AddressFree63</AddressFree>
+        </Address>
+      </Entity>
+      <ReportingRole>CBC703</ReportingRole>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD2</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId3</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId3</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId3</CorrDocRefId>
+      </DocSpec>
+    </ReportingEntity>
+    <CbcReports>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD12</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId7</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId7</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId7</CorrDocRefId>
+      </DocSpec>
+      <ResCountryCode>AO</ResCountryCode>
+      <Summary>
+        <Revenues>
+          <Unrelated currCode="ARS">79228162514264337593543950334</Unrelated>
+          <Related currCode="ARS">79228162514264337593543950334</Related>
+          <Total currCode="ARS">79228162514264337593543950334</Total>
+        </Revenues>
+        <ProfitOrLoss currCode="ARS">79228162514264337593543950334</ProfitOrLoss>
+        <TaxPaid currCode="ARS">79228162514264337593543950334</TaxPaid>
+        <TaxAccrued currCode="ARS">79228162514264337593543950334</TaxAccrued>
+        <Capital currCode="ARS">79228162514264337593543950334</Capital>
+        <Earnings currCode="ARS">79228162514264337593543950334</Earnings>
+        <NbEmployees>79228162514264337593543950334</NbEmployees>
+        <Assets currCode="ARS">79228162514264337593543950334</Assets>
+      </Summary>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>CI</ResCountryCode>
+          <ResCountryCode>HR</ResCountryCode>
+          <ResCountryCode>CU</ResCountryCode>
+          <TIN issuedBy="BE">TIN22</TIN>
+          <IN issuedBy="DO" INType="INType64">IN64</IN>
+          <IN issuedBy="EC" INType="INType65">IN65</IN>
+          <IN issuedBy="EG" INType="INType66">IN66</IN>
+          <Name>Name64</Name>
+          <Name>Name65</Name>
+          <Name>Name66</Name>
+          <Address legalAddressType="OECD304">
+            <CountryCode>DO</CountryCode>
+            <AddressFree>AddressFree64</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>EC</CountryCode>
+            <AddressFree>AddressFree65</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>EG</CountryCode>
+            <AddressFree>AddressFree66</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>BD</IncorpCountryCode>
+        <BizActivities>CBC503</BizActivities>
+        <BizActivities>CBC504</BizActivities>
+        <BizActivities>CBC505</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo19</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>CW</ResCountryCode>
+          <ResCountryCode>CY</ResCountryCode>
+          <ResCountryCode>CZ</ResCountryCode>
+          <TIN issuedBy="BZ">TIN23</TIN>
+          <IN issuedBy="SV" INType="INType67">IN67</IN>
+          <IN issuedBy="GQ" INType="INType68">IN68</IN>
+          <IN issuedBy="ER" INType="INType69">IN69</IN>
+          <Name>Name67</Name>
+          <Name>Name68</Name>
+          <Name>Name69</Name>
+          <Address legalAddressType="OECD302">
+            <CountryCode>SV</CountryCode>
+            <AddressFree>AddressFree67</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD303">
+            <CountryCode>GQ</CountryCode>
+            <AddressFree>AddressFree68</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>ER</CountryCode>
+            <AddressFree>AddressFree69</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>BB</IncorpCountryCode>
+        <BizActivities>CBC506</BizActivities>
+        <BizActivities>CBC507</BizActivities>
+        <BizActivities>CBC508</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo20</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>DK</ResCountryCode>
+          <ResCountryCode>DJ</ResCountryCode>
+          <ResCountryCode>DM</ResCountryCode>
+          <TIN issuedBy="BJ">TIN24</TIN>
+          <IN issuedBy="EE" INType="INType70">IN70</IN>
+          <IN issuedBy="ET" INType="INType71">IN71</IN>
+          <IN issuedBy="FK" INType="INType72">IN72</IN>
+          <Name>Name70</Name>
+          <Name>Name71</Name>
+          <Name>Name72</Name>
+          <Address legalAddressType="OECD305">
+            <CountryCode>EE</CountryCode>
+            <AddressFree>AddressFree70</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>ET</CountryCode>
+            <AddressFree>AddressFree71</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD302">
+            <CountryCode>FK</CountryCode>
+            <AddressFree>AddressFree72</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>BY</IncorpCountryCode>
+        <BizActivities>CBC509</BizActivities>
+        <BizActivities>CBC510</BizActivities>
+        <BizActivities>CBC511</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo21</OtherEntityInfo>
+      </ConstEntities>
+    </CbcReports>
+    <CbcReports>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD13</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId8</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId8</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId8</CorrDocRefId>
+      </DocSpec>
+      <ResCountryCode>AI</ResCountryCode>
+      <Summary>
+        <Revenues>
+          <Unrelated currCode="AUD">-1</Unrelated>
+          <Related currCode="AUD">-1</Related>
+          <Total currCode="AUD">-1</Total>
+        </Revenues>
+        <ProfitOrLoss currCode="AUD">-1</ProfitOrLoss>
+        <TaxPaid currCode="AUD">-1</TaxPaid>
+        <TaxAccrued currCode="AUD">-1</TaxAccrued>
+        <Capital currCode="AUD">-1</Capital>
+        <Earnings currCode="AUD">-1</Earnings>
+        <NbEmployees>-1</NbEmployees>
+        <Assets currCode="AUD">-1</Assets>
+      </Summary>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>DO</ResCountryCode>
+          <ResCountryCode>EC</ResCountryCode>
+          <ResCountryCode>EG</ResCountryCode>
+          <TIN issuedBy="BM">TIN25</TIN>
+          <IN issuedBy="FO" INType="INType73">IN73</IN>
+          <IN issuedBy="FJ" INType="INType74">IN74</IN>
+          <IN issuedBy="FI" INType="INType75">IN75</IN>
+          <Name>Name73</Name>
+          <Name>Name74</Name>
+          <Name>Name75</Name>
+          <Address legalAddressType="OECD303">
+            <CountryCode>FO</CountryCode>
+            <AddressFree>AddressFree73</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>FJ</CountryCode>
+            <AddressFree>AddressFree74</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>FI</CountryCode>
+            <AddressFree>AddressFree75</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>BE</IncorpCountryCode>
+        <BizActivities>CBC512</BizActivities>
+        <BizActivities>CBC513</BizActivities>
+        <BizActivities>CBC501</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo22</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>SV</ResCountryCode>
+          <ResCountryCode>GQ</ResCountryCode>
+          <ResCountryCode>ER</ResCountryCode>
+          <TIN issuedBy="BT">TIN26</TIN>
+          <IN issuedBy="FR" INType="INType76">IN76</IN>
+          <IN issuedBy="GF" INType="INType77">IN77</IN>
+          <IN issuedBy="PF" INType="INType78">IN78</IN>
+          <Name>Name76</Name>
+          <Name>Name77</Name>
+          <Name>Name78</Name>
+          <Address legalAddressType="OECD301">
+            <CountryCode>FR</CountryCode>
+            <AddressFree>AddressFree76</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD302">
+            <CountryCode>GF</CountryCode>
+            <AddressFree>AddressFree77</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD303">
+            <CountryCode>PF</CountryCode>
+            <AddressFree>AddressFree78</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>BZ</IncorpCountryCode>
+        <BizActivities>CBC502</BizActivities>
+        <BizActivities>CBC503</BizActivities>
+        <BizActivities>CBC504</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo23</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>EE</ResCountryCode>
+          <ResCountryCode>ET</ResCountryCode>
+          <ResCountryCode>FK</ResCountryCode>
+          <TIN issuedBy="BO">TIN27</TIN>
+          <IN issuedBy="TF" INType="INType79">IN79</IN>
+          <IN issuedBy="GA" INType="INType80">IN80</IN>
+          <IN issuedBy="GM" INType="INType81">IN81</IN>
+          <Name>Name79</Name>
+          <Name>Name80</Name>
+          <Name>Name81</Name>
+          <Address legalAddressType="OECD304">
+            <CountryCode>TF</CountryCode>
+            <AddressFree>AddressFree79</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>GA</CountryCode>
+            <AddressFree>AddressFree80</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>GM</CountryCode>
+            <AddressFree>AddressFree81</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>BJ</IncorpCountryCode>
+        <BizActivities>CBC505</BizActivities>
+        <BizActivities>CBC506</BizActivities>
+        <BizActivities>CBC507</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo24</OtherEntityInfo>
+      </ConstEntities>
+    </CbcReports>
+    <CbcReports>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD0</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId9</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId9</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId9</CorrDocRefId>
+      </DocSpec>
+      <ResCountryCode>AQ</ResCountryCode>
+      <Summary>
+        <Revenues>
+          <Unrelated currCode="AWG">3</Unrelated>
+          <Related currCode="AWG">3</Related>
+          <Total currCode="AWG">3</Total>
+        </Revenues>
+        <ProfitOrLoss currCode="AWG">3</ProfitOrLoss>
+        <TaxPaid currCode="AWG">3</TaxPaid>
+        <TaxAccrued currCode="AWG">3</TaxAccrued>
+        <Capital currCode="AWG">3</Capital>
+        <Earnings currCode="AWG">3</Earnings>
+        <NbEmployees>3</NbEmployees>
+        <Assets currCode="AWG">3</Assets>
+      </Summary>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>FO</ResCountryCode>
+          <ResCountryCode>FJ</ResCountryCode>
+          <ResCountryCode>FI</ResCountryCode>
+          <TIN issuedBy="BQ">TIN28</TIN>
+          <IN issuedBy="GE" INType="INType82">IN82</IN>
+          <IN issuedBy="DE" INType="INType83">IN83</IN>
+          <IN issuedBy="GH" INType="INType84">IN84</IN>
+          <Name>Name82</Name>
+          <Name>Name83</Name>
+          <Name>Name84</Name>
+          <Address legalAddressType="OECD302">
+            <CountryCode>GE</CountryCode>
+            <AddressFree>AddressFree82</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD303">
+            <CountryCode>DE</CountryCode>
+            <AddressFree>AddressFree83</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>GH</CountryCode>
+            <AddressFree>AddressFree84</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>BM</IncorpCountryCode>
+        <BizActivities>CBC508</BizActivities>
+        <BizActivities>CBC509</BizActivities>
+        <BizActivities>CBC510</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo25</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>FR</ResCountryCode>
+          <ResCountryCode>GF</ResCountryCode>
+          <ResCountryCode>PF</ResCountryCode>
+          <TIN issuedBy="BA">TIN29</TIN>
+          <IN issuedBy="GI" INType="INType85">IN85</IN>
+          <IN issuedBy="GR" INType="INType86">IN86</IN>
+          <IN issuedBy="GL" INType="INType87">IN87</IN>
+          <Name>Name85</Name>
+          <Name>Name86</Name>
+          <Name>Name87</Name>
+          <Address legalAddressType="OECD305">
+            <CountryCode>GI</CountryCode>
+            <AddressFree>AddressFree85</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD301">
+            <CountryCode>GR</CountryCode>
+            <AddressFree>AddressFree86</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD302">
+            <CountryCode>GL</CountryCode>
+            <AddressFree>AddressFree87</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>BT</IncorpCountryCode>
+        <BizActivities>CBC511</BizActivities>
+        <BizActivities>CBC512</BizActivities>
+        <BizActivities>CBC513</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo26</OtherEntityInfo>
+      </ConstEntities>
+      <ConstEntities>
+        <ConstEntity>
+          <ResCountryCode>TF</ResCountryCode>
+          <ResCountryCode>GA</ResCountryCode>
+          <ResCountryCode>GM</ResCountryCode>
+          <TIN issuedBy="BW">TIN30</TIN>
+          <IN issuedBy="GD" INType="INType88">IN88</IN>
+          <IN issuedBy="GP" INType="INType89">IN89</IN>
+          <IN issuedBy="GU" INType="INType90">IN90</IN>
+          <Name>Name88</Name>
+          <Name>Name89</Name>
+          <Name>Name90</Name>
+          <Address legalAddressType="OECD303">
+            <CountryCode>GD</CountryCode>
+            <AddressFree>AddressFree88</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD304">
+            <CountryCode>GP</CountryCode>
+            <AddressFree>AddressFree89</AddressFree>
+          </Address>
+          <Address legalAddressType="OECD305">
+            <CountryCode>GU</CountryCode>
+            <AddressFree>AddressFree90</AddressFree>
+          </Address>
+        </ConstEntity>
+        <IncorpCountryCode>BO</IncorpCountryCode>
+        <BizActivities>CBC501</BizActivities>
+        <BizActivities>CBC502</BizActivities>
+        <BizActivities>CBC503</BizActivities>
+        <OtherEntityInfo>OtherEntityInfo27</OtherEntityInfo>
+      </ConstEntities>
+    </CbcReports>
+    <AdditionalInfo>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD12</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId7</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId7</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId7</CorrDocRefId>
+      </DocSpec>
+      <OtherInfo>OtherInfo7</OtherInfo>
+      <ResCountryCode>BD</ResCountryCode>
+      <ResCountryCode>BB</ResCountryCode>
+      <ResCountryCode>BY</ResCountryCode>
+      <SummaryRef>CBC608</SummaryRef>
+      <SummaryRef>CBC609</SummaryRef>
+      <SummaryRef>CBC610</SummaryRef>
+    </AdditionalInfo>
+    <AdditionalInfo>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD13</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId8</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId8</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId8</CorrDocRefId>
+      </DocSpec>
+      <OtherInfo>OtherInfo8</OtherInfo>
+      <ResCountryCode>BE</ResCountryCode>
+      <ResCountryCode>BZ</ResCountryCode>
+      <ResCountryCode>BJ</ResCountryCode>
+      <SummaryRef>CBC611</SummaryRef>
+      <SummaryRef>CBC601</SummaryRef>
+      <SummaryRef>CBC602</SummaryRef>
+    </AdditionalInfo>
+    <AdditionalInfo>
+      <DocSpec>
+        <DocTypeIndic xmlns="urn:oecd:ties:stf:v4">OECD0</DocTypeIndic>
+        <DocRefId xmlns="urn:oecd:ties:stf:v4">DocRefId9</DocRefId>
+        <CorrMessageRefId xmlns="urn:oecd:ties:stf:v4">CorrMessageRefId9</CorrMessageRefId>
+        <CorrDocRefId xmlns="urn:oecd:ties:stf:v4">CorrDocRefId9</CorrDocRefId>
+      </DocSpec>
+      <OtherInfo>OtherInfo9</OtherInfo>
+      <ResCountryCode>BM</ResCountryCode>
+      <ResCountryCode>BT</ResCountryCode>
+      <ResCountryCode>BO</ResCountryCode>
+      <SummaryRef>CBC603</SummaryRef>
+      <SummaryRef>CBC604</SummaryRef>
+      <SummaryRef>CBC605</SummaryRef>
+    </AdditionalInfo>
+  </CbcBody>
+</CBC_OECD>
