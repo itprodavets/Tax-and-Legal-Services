@@ -48,7 +48,7 @@
 			this.$router.afterEach((to: Route, from: Route) => this.setStepper(to.name));
 		}
 
-		private setStepper(name: string | undefined) {
+		private setStepper(name: string | null | undefined) {
 			if (name) {
 				const step = _.find(this.steppers, x => name.search(x.route) === 0);
 				if (step) this.stepper = step.id;
