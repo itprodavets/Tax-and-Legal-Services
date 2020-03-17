@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
-    "deploy": "bash deploy.sh"
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -37,6 +37,7 @@
     "@vue/cli-service": "^4.2.3",
     "axios": "^0.19.2",
     "normalizr": "^3.6.0",
+    "push-dir": "^0.4.1",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
     "typescript": "^3.8.3",
